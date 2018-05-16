@@ -78,8 +78,17 @@ class RegsiterForm extends Component {
           <label htmlFor="password">password</label>
           <Field component={renderField} type="password" name="password" placeholder="password" />
         </div>
+        <div>
+          <label htmlFor="date_of_birth">date_of_birth</label>
+          <Field component={renderField} type="date" name="date_of_birth" placeholder="date_of_birth" />
+        </div>
+        <div>
+          <label htmlFor="has_read_terms">I have read the terms and conditions</label>
+          <Field component={renderField} type="checkbox" name="has_read_terms" placeholder="has_read_terms" />
+        </div>
+        
         <a type="submit" {...cta} className="primary" onClick={this.handleSubmit}>Register</a>
-        <Link to="/login" {...cta} className="secundary">Login</Link>
+        <Link to="/" {...cta} className="secundary">Login</Link>
       </form>
     )
   }
@@ -94,7 +103,7 @@ const selector = formValueSelector('register')
 
 export default connect(state => {
   return {
-    fieldValues: selector(state, 'email', 'password', 'last_name', 'first_name')
+    fieldValues: selector(state, 'email', 'password', 'last_name', 'first_name', 'has_read_terms', 'has_read_terms', 'date_of_birth')
   }
 }, dispatch => {
  return {

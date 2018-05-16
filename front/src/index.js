@@ -10,7 +10,6 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import Logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga'
-import { syncHistoryWithStore, ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 
 import reducers from './js/Reducers/';
 import sagas from './js/Sagas/';
@@ -28,16 +27,15 @@ const container = css({
 })
 
 const sagaMiddleware = createSagaMiddleware()
-const routeMiddleware = routerMiddleware(history)
 
-let store = createStore(reducers, applyMiddleware(Logger), applyMiddleware(sagaMiddleware), applyMiddleware(routeMiddleware))
+let store = createStore(reducers, applyMiddleware(Logger), applyMiddleware(sagaMiddleware))
 
 sagaMiddleware.run(sagas)
 
 ReactDOM.render(
   <Provider store={store}>
     { /* ConnectedRouter will use the store from Provider automatically */ }
-    <Router history={syncHistoryWithStore(history, store)}>
+    <Router history={history}>
       <div {...container}>
         <MenuApp />
         <Route path='/' component={Main} />

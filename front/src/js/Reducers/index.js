@@ -8,7 +8,6 @@ const tellAboutMe = combineReducers({
   form: formReducer,
   user: userReducer,
   routing: routerReducer
-
 })
 
 export default tellAboutMe

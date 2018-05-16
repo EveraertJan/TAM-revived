@@ -13,8 +13,8 @@ class Main extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' component={ Auth.isUserAuthenticated() ? FeedApp :  LoginApp} />
         <Route exact path='/register' component={RegisterApp} />
+        <Route exact path='/' component={ Auth.isUserAuthenticated() ? FeedApp :  LoginApp} />
       </Switch>
     )
   }
