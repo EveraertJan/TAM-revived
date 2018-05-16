@@ -1,0 +1,28 @@
+version: '2'
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "${IP_GROUP}"
+  system_traefik:
+    external: true
+
+services:
+  front:
+    command: ["npm", "run", "build"]
+    volumes:
+      - "./front/build:/tam/build"
+  api:
+    expose:
+      - 3000
+    labels:
+      traefik.frontend.rule: "Host:${DOMAIN}"
+      traefik.port: "3000"
+      traefik.docker.network: "system_traefik"
+    volumes:
+      - "./front/build:/tam/public"
+    networks:
+      - default
+      - system_traefik

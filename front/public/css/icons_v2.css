@@ -1,0 +1,152 @@
+.icon{
+	background: url("./iconContainer.svg");
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+}
+
+
+.menu-active{
+	background-position: -35px 0px;
+}
+.menu-inactive{
+	background-position: 0px 0px;
+}
+.search-active{
+	background-position: -105px 210px;
+}
+.search-inactive{
+	background-position: -70px -210px;
+}
+.logo-active{
+	background-position: -245px 0px;
+}
+.logo-inactive{
+	background-position: -210px 0px;
+}
+.messages-active{
+	background-position: -105px -105px;
+}
+.messages-inactive{
+	background-position: -70px -105px;
+}
+.notifications-active{
+	background-position: -105px -140px;
+}
+.notifications-inactive{
+	background-position: -70px -140px;
+}
+.labels-active{
+	background-position: -245px -35px;
+}
+.labels-inactive{
+	background-position: -210px -35px;
+}
+.lock-active{
+	background-position: -175px -140px;
+}
+.lock-inactive{
+	background-position: -140px -140px;
+}
+.settings-active{
+	background-position: -105px -175px;
+}
+.settings-inactive{
+	background-position: -70px -175px;
+}
+.profile-active{
+	background-position: -35px -35px;
+}
+.profile-inactive{
+	background-position: 0px -35px;
+}
+.add-profile-active{
+	background-position: -105px -35px;
+}
+.add-profile-inactive{
+	background-position: -70px -35px;
+}
+.delete-active{
+	background-position: -175px -70px;
+}
+.delete-inactive{
+	background-position: -140px -70px;
+}
+.filter-text-active{
+	background-position: -245px -210px;
+}
+.filter-text-inactive{
+	background-position: -210px -210px;
+}
+.filter-image-active{
+	background-position: -35px -245px;
+}
+.filter-image-inactive{
+	background-position: -0px -245px;
+}
+.filter-video-active{
+	background-position: -105px 0px;
+}
+.filter-video-inactive{
+	background-position: -70px 0px;
+}
+.filter-article-active{
+	background-position: -245px -70px;
+}
+.filter-article-inactive{
+	background-position: -210px -70px;
+}
+.filter-audio-active{
+	background-position: -245px -245px;
+}
+.filter-audio-inactive{
+	background-position: -210px -245px;
+}
+.add-active{
+	background-position: -245px -140px;
+}
+.add-inactive{
+	background-position: -210px -140px;
+}
+.calendar-active{
+	background-position: -35px -140px;
+}
+.calendar-inactive{
+	background-position: 0px -140px;
+}
+.birthday-active{
+	background-position: -35px -70px;
+}
+.birthday-inactive{
+	background-position: 0px -70px;
+}
+.hospital-active{
+	background-position: -35px -105px;
+}
+.hospital-inactive{
+	background-position: 0px -105px;
+}
+.folder-active{
+	background-position: -175px 2px;
+}
+.folder-inactive{
+	background-position: -140px 2px;
+}
+.document-active{
+	background-position: -175px -35px;
+}
+.document-inactive{
+	background-position: -140px -35px;
+}
+.download-active{
+	background-position: -175px -105px;
+}
+.download-inactive{
+	background-position: -140px -105px;
+}
+
+
+
+.icon.fl:hover{
+	float: left;
+}

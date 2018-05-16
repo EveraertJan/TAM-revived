@@ -1,0 +1,1943 @@
+/*   rgba(221, 14, 30, 1); */
+
+body{
+	background-color: #EEE;
+}
+
+/* --- user settings --- */
+
+.userSettingsMenuHolder{
+	background-color: #FFF;
+	z-index: 200;
+	position: fixed;
+	top: 60px;
+	left: 100%;
+	margin-left: -180px;
+	width: 170px;
+	height: 100px;
+	display: block;
+}
+.userSettingsMenuHolder a{
+	width: 100%;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+
+.settingsWrap{
+	margin-top: 80px;
+	background-color: #FFF;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+
+/* search */
+
+.searchWrap{
+	box-sizing: border-box;
+	padding: 10px;
+	margin-top: 80px;
+}
+.userResultList{
+	float: left;
+	width: 100%;
+}
+.searchUserbox{
+	width: 33%;
+	float: left;
+	box-sizing: border-box;
+	padding: 10px;
+}
+.searchUserItem{
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	background-color: #FFF;
+}
+.searchUserName{
+	line-height: 40px;
+	margin-left: 10px;
+}
+.searchTitle{
+	width: 100%;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-top: 20px;
+	float: left;
+}
+
+.postResultBox{
+	width: 33%;
+	box-sizing: border-box;
+	padding: 10px;
+	float: left;
+}
+.postResultItem{
+	background-color: #FFF;
+	box-sizing: border-box;
+	padding: 10px;
+	float: left;
+	width: 100%;
+	height: 350px;
+}
+.postResultImage{
+	width: 100%;
+	height: 200px;
+	background-color: #EEE;
+	float: left;
+	overflow: hidden;
+}
+.postResultImage img{
+	height: 120%;
+}
+.postResultTitle{
+	width: calc(100% - 50px);
+	overflow: hidden;
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	font-weight: bold;
+}
+.postResultExp{
+	width: 100%;
+	float: left;
+	height: 78px;
+	overflow: hidden;
+
+}
+
+/* documentDetail */
+
+.pdfView{
+	width: 100%;
+	height: 70vh;
+}
+
+
+.breadCrumbs{
+	width: 100%;
+	height: 50px;
+	margin-top: 80px;
+}
+.breadCrumbs a{
+	color: #666;
+	font-style: italic;
+}
+.detailHeader{
+	width: 100%;
+	height: 50px;
+}
+.detailForm{
+	width: 70%;
+	float: left;
+}
+.detailForm input[type="text"]{
+	width: calc(80% - 20px);
+	float: left;
+}
+.detailForm .CTA{
+	width: 20%;
+	margin-left: 10px;
+	text-align: center;
+	font-family: sans-serif !important;
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 5px;
+	background-color: rgb(221, 14, 30);
+	color: #FFF;
+}
+.detailForm .CTA:hover{
+	text-decoration: none;
+	background-color: rgba(221, 14, 30, 0.7);
+}
+.detailHeader .iconHolder{
+	width: 100px;
+	float: right;
+}
+.iconHolder .icon{
+	float: right;
+	width: 30px;
+	margin: 5px;
+}
+
+/* --- create child --- */
+
+
+.createChildContainer{
+	box-sizing: border-box;
+	padding: 20px;
+	background-color: #FFF;
+	margin-top: 80px;
+}
+
+
+.createChildBlock{
+	background-color: #FFF;
+	margin-bottom: 20px;
+	padding: 20px;
+	float: left;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.createChildBlock h1{
+	font-weight: bold;
+	font-size: 1.2em;
+	float: left;
+	display: block;
+}
+.blockHeader .info{
+	font-size: .8em;
+	color: #AAA;
+	display: block;
+	margin: 0px;
+	line-height: 20px;
+	float: right;
+	color: #ED4726;
+}
+.createChildBlock p{
+	line-height: 1.3em;
+	margin: 20px;
+	color: #666;
+}
+.blockHeader{
+	display: block;
+	width: 100%;
+	height: 20px;
+	float: left;
+	margin-bottom: 20px;
+}
+.halfBlock{
+	width: 50%;
+	float: left;
+	padding: 10px;
+	box-sizing: border-box;	
+}
+.halfBlock .userImage{
+	width: 100%;
+	overflow: hidden;
+	background-color: #EEE;
+	height: 220px;
+	margin-bottom: 20px;
+	padding-top: -50px;
+	cursor: pointer;
+
+}
+.halfBlock .userImage img{
+	display: none;
+}
+.birthInfo .CTA,
+.halfBlock .CTA{
+	float: right;
+	width: 100px;
+	line-height: 40px;
+	height: 40px;
+	text-decoration: none;
+	background-color: rgb(221, 14, 30);
+	color: #FFF;
+	border-radius: 5px;
+	margin-top: 30px;
+}
+.radioHolder{
+	width: 100%;
+	margin-top: 10px;
+}
+.radioHolder input{
+	display: block;
+	margin-left: 10px;
+	float: left;
+}
+.genderSpan{
+	display: block;
+	float: left;
+	line-height: 20px;
+	margin-left: 10px;
+	margin-right: 20px;
+}
+.adminList{
+	margin-bottom: 10px;
+	float: left;
+	width: 100%;
+}
+.adminItem{
+	width: 100%;
+	height: 40px;
+	line-height: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+.adminItem ul{
+	width: 100%;
+}
+.adminItem li{
+	display: inline-block;
+	text-align: left;
+}
+
+.adminAdd ul{
+	width: 100%;
+}
+.adminAdd li{
+	display: inline-block;
+	text-align: left;
+}
+
+.adminName{
+	width: 30%;
+}
+.adminMail{
+	width: 40%;
+}
+.adminRelation{
+	width: 20%;
+}
+.adminDelete{
+	width: 30px;
+	text-align: center !important;
+	font-size: 1.2em;
+}
+.adminAddCTA{
+	width: 30px;
+	text-align: center !important;
+	font-size: 1.2em;
+	color: #ED4726;
+
+}
+.emailPreview {
+	width: 100%;
+	min-height: 200px;
+	font-size: 1.2em;
+	line-height: 1.2em;
+	float: left;
+	margin-bottom: 20px;
+}
+.emailPreview .adapt{
+	color: #ED4726;
+}
+.createChildCTA{
+	width: 20%;
+	margin-left: 10px;
+	text-align: center;
+	font-family: sans-serif !important;
+	float: right;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 5px;
+	background-color: rgb(221, 14, 30);
+	color: #FFF;
+}
+.createChildCTA:hover{
+	text-decoration: none;
+	background-color: rgba(221, 14, 30, 0.7);
+}
+.light{
+	background-color: #FFF;
+	color: rgb(221, 14, 30);
+}
+.light:hover{
+	background-color: rgb(221, 14, 30);
+	color: #FFF;
+}
+.sendNowWrap{
+	float: right;
+	box-sizing: border-box;
+	width: 300px;
+	height: 50px;
+	padding: 20px 30px;
+	font-size: 1em !important;
+	text-align: right;
+}
+
+
+/* --- notifications --- */
+
+.notificationContainer{
+	margin-top: 80px;
+	background-color: #FFF;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+
+
+.allread{
+	width: 100%;
+	margin-bottom: 20px;
+	float: left;
+}
+.notificationItem{
+	width: 100%;
+	background-color: #FFF;
+	margin-bottom: 20px;
+	height: 40px;
+	float: left;
+	color: #000;
+	display: block;
+}
+.notificationItem:hover{
+}
+.notificationImg{
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin: 5px 10px 5px 0px;
+	overflow: hidden;
+	border-radius: 50%;
+}
+.notificationImg img{
+	width: 30px;
+}
+
+.notificationInfo{
+	width: calc(100% - 40px);
+	float: left;
+}
+.notificationHeader{
+	font-weight: bold;
+	height: 20px;
+	line-height: 20px;
+	width: 100%;
+	float: left;
+}
+.notificationBy{
+	float: left;
+	width: calc(50% - 20px);
+}
+.notificationTime{
+	text-align: right;
+	float: right;
+	width: calc(50% - 20px);
+}
+.notificationMessage{
+	width: 100%;
+	color: #000;
+	height: 20px;
+}
+
+
+
+
+/* --- hidden interest --- */
+
+.HIContainer{
+	background-color: #FFF;
+	margin-top: 80px;
+	padding: 10px;
+	box-sizing: border-box;
+	margin-bottom: 50px;
+}
+.HIBox{
+	height: 200px;
+	float: left;
+	margin-bottom: 20px;
+}
+.HIBox img{
+	width: 200px;
+	height: 200px;
+	float: left;
+}
+.HIInfo{
+	width: calc(100% - 220px);
+	float: left;
+	margin-left: 20px;
+}
+.HIInfo h1{
+	font-size: 1.5em;
+	height: 40px;
+	line-height: 40px;
+	margin: 0px;
+}
+.HIInfo p{
+	height: 100px;
+	overflow: hidden;
+	width: 100%;
+}
+.HIInfo .CTA{
+	float: right;
+	width: 20%;
+	text-align: center;
+	font-family: sans-serif !important;
+	height: 30px;
+	font-size: .8em;
+	line-height: 30px;
+	border-radius: 5px;
+	background-color: rgb(221, 14, 30);
+	color: #FFF;
+	margin: 0px;
+}
+
+
+
+/* --- conversations --- */
+
+.boxWrap{
+	margin-top: 60px;
+	background-color: #FFF;
+	box-sizing: border-box;
+	padding: 10px;
+}
+.conversationWrap{
+	float: left;
+		width: 300px;
+		float: left;
+		height: 100%;
+}
+.conversationList{
+	overflow: scroll;
+	float: left;
+	height: calc(80vh - 100px);
+}
+.createConvo{
+	display: block;
+	padding: 5px;
+	height: 30px;
+	float: left;
+	cursor: pointer;
+	font-weight: bold;
+	color: #AAA;
+}
+.conversationItem{
+	height: 50px;
+	width: 100%;
+	padding: 5px 0px;
+	float: left;
+	cursor: pointer;
+}
+
+.conversationItem:hover{
+	background-color: #EEE;
+}
+.conversationItem .userPictureSmall{
+	margin: 10px;
+}
+.conversationInfo{
+	height: 50px;
+	width: calc(100% - 50px);
+	float: left;
+}
+.conversationName{
+	width: 100%;
+	display: block;
+	height: 20px;
+	margin-top: 5px;
+	font-weight: bold;
+	line-height: 20px;
+	overflow: hidden;
+}
+.conversationdate{
+	width: 100%;
+	display: block;
+	font-size: .9em;
+	height: 20px;
+	margin-bottom: 5px;
+	line-height: 20px;
+	color: #AAA;
+
+}
+
+.messageWrap{
+	display: block;
+	height: 100%;
+	float: right;
+	width: calc(100% - 300px);
+}
+.conversationTitle{
+	font-weight: bold;
+	width: 50%;
+	height: 50px;
+	padding: 10px;
+	overflow-y: hidden;
+	box-sizing: border-box;
+	line-height: 22px;
+	float: left;
+}
+.conversationParticipants{
+	width: calc(50% - 35px);
+	height: 50px;
+	float: left;
+}
+.conversationParticipants .userPictureSmall{
+	margin: 10px;
+	margin-top: 6px;
+	margin-left: 3px;
+}
+.userPictureSmall .otherUsers{
+	width: 30px;
+	height: 30px;
+	line-height: 25px;
+	text-align: center;
+	font-weight: bold;
+	display: block;
+	background-color: #AAA;
+	color: #FFF;
+}
+
+.messageHeader .icon{
+	margin: 0px;
+	width: 35px;
+	float: left;
+}
+
+.messagesHolder{
+	width: 100%;
+	height: calc(80vh - 100px);
+	float: left;
+	overflow: scroll;
+}
+.messageItem{
+	margin: 10px;
+	display: block;
+	width: 100%;
+	float: left;
+}
+.messageItem .userPictureSmall{
+	margin: 10px;
+	float: left;
+}
+.messageText{
+	float: left;
+	width: calc(100% - 50px);
+	box-sizing: border-box;
+	padding: 10px;
+	line-height: 1.4em;
+}
+.messageDate{
+	float: left;
+	width: calc(100% - 50px);
+	box-sizing: border-box;
+	padding: 0px 10px;
+	line-height: 1.4em;
+	color: #AAA;
+	font-size: .9em;
+
+}
+
+.userList{
+	width: 100%;
+	display: block;
+}
+.userList li{
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 5px;
+	float: left;
+	height: 30px;
+	margin-bottom: 10px;
+}
+.userList span{
+	line-height: 25px;
+	float: left;
+	height: 20px;
+	width: 80%;
+	max-width: 80%;
+	margin-left: 10px;
+	float: left;
+}
+.userList .icon{
+	margin: 2px 0px 0px 0px;
+	width: 30px;
+	padding: 5px;
+	float: left;
+}
+.backBtn{
+	display: none;
+}
+/* --- login --- */
+
+
+.loginContainer .userImage {
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.logoNoUser{
+	float: right;
+
+}
+.logoNoUser .icon{
+	margin: 6px;
+}
+.loginContainer{
+	width: 350px;
+	float: right;
+	margin-right: 50px;
+	position: absolute;
+	top: 50%;
+	margin-top: -150px;
+	left: 100%;
+	box-sizing: border-box;
+	padding: 20px;
+	margin-left: -400px;
+	background-color: #FFF;
+}
+
+.secundaryCTA{
+	float: left;
+	display: block;
+	width: 50%;
+	text-align: center;
+	text-decoration: none;
+	color: rgb(221, 13, 31);
+	height: 40px;
+	line-height: 40px;
+}
+.secundaryCTA:hover{
+	text-decoration: underline;
+	color:rgb(221, 13, 32);
+}
+.primaryCTA{
+	float: left;
+	display: block;
+	width: 50%;
+	font-size: .8em;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 40px;
+	height: 40px;
+	background-color: rgb(221, 13, 32);
+	border-radius: 5px;
+	color: #FFF;
+	text-decoration: none;
+}
+.primaryCTA:hover{
+	color: #FFF;
+	background-color: rgba(221, 13, 32, .8);
+}
+/* --- register --- */
+
+
+.registerContainer{
+	padding: 20px;
+	box-sizing: border-box;
+	margin-bottom: 50px;
+	background-color: #FFF;
+
+}
+.registerContainer .userImage {
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	margin-bottom: 20px;
+	background-color: #EEE;
+}
+.registerContainer .primaryCTA{
+	margin: 0px;
+	float: left;
+}
+
+.registerContainer{
+	width: 350px;
+	float: right;
+	margin-right: 50px;
+	position: absolute;
+	top: 0%;
+	margin-top: 100px;
+	left: 100%;
+	margin-left: -400px;
+}
+/* --- confirm --- */
+
+
+.confirmContainer{
+	width: 300px;
+	height: auto;
+	position: fixed;
+	left: calc(100vw - 400px);
+	top: 50%;
+	margin-top: -150px;
+	background-color: #FFF;
+	box-sizing: border-box;
+	padding: 20px;
+}
+.confirmContainer .primaryCTA{
+	float: right;
+}
+
+/* --- documents --- */
+
+.documentOptions{
+	background-color: #FFF;
+	width: 100%;	
+	box-sizing: border-box;
+	margin-top: 50px;
+	padding: 10px;
+	float: left;
+}
+
+.createWrap{
+	width: 50%;
+	float: left;
+	height: 50px;
+}
+.createWrap a{
+	display: inline-block;
+}
+.iconLabel{
+	float: left;
+	line-height: 55px;
+}
+.createWrap .icon{
+	float: left;
+	margin: 10px;
+}
+
+.sortWrap{
+	float: left;
+	width: 50%;
+	padding-top: 5px;
+}
+.documentSort{
+	margin: 0px;
+	padding: 0px;
+	width: auto;
+	float: right;
+	border: 0px;
+}
+
+.folderPath{
+	width: 100%;
+}
+.folderPath ul li{
+	display: inline-block;
+	margin-bottom: 20px;
+	margin-right: 10px;
+}
+.folderPath ul li a{
+	color: #AAA;
+	text-decoration: none;
+
+}
+
+.menuLink{
+	display: block;
+	float: left;
+	height: 30px;
+	padding: 10px;
+	line-height: 30px;
+	color: #999;
+	font-weight: bold;
+	text-decoration: none;
+}
+.folderList{
+	width: 100%;
+	color: #AAA;
+	display: block;
+	float: left;
+	margin-bottom: 50px;
+	margin-top: 30px;
+}
+.folderItem{
+	width: 100%;
+	display: block;
+	float: left;
+	box-sizing: border-box;
+	padding: 10px;
+
+}
+
+.folderItem:hover{
+	background-color: #EEE;
+}
+.fIcon{
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin: 10px;
+	width: 30px;
+	line-height: 20px;
+}
+.fName{
+	color: #000;
+	font-weight: bold;
+	float: left;
+	line-height: 60px;
+	width: calc(100% - 50px);
+	color: #000;
+	font-weight: bold;
+	float: left;
+	height: 50px;
+	width: calc(40% - 50px);
+}
+.fModified{
+	float: left;
+	text-align: left;
+	line-height: 20px;
+	width: 40%;
+	height: 50px;
+	line-height: 50px;
+}
+.fCount{
+	float: left;
+	text-align: right;
+	width: 20%;
+	height: 50px;
+	line-height: 50px;
+}
+.documentList{
+	width: 100%;
+	color: #AAA;
+	display: block;
+	float: left;
+	margin-bottom: 50px;
+}
+.documentItem{
+	width: 100%;
+	display: block;
+	float: left;
+	box-sizing: border-box;
+	padding: 5px;
+}
+.documentItem:hover{
+	background-color: #EEE;
+}
+.dName{
+	color: #000;
+	font-weight: bold;
+}
+
+.overlay{
+	height: 100%;
+	width: 100%;
+	z-index: 21;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.folderCreateBox{
+	width: 300px;
+	height: 150px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-top: -100px;
+	margin-left: -150px;
+	background-color: #FFF;
+	box-sizing: border-box;
+	padding: 10px;
+	z-index: 22;
+}
+
+
+.folderCreateCTA{
+	width: 150px;
+	height: 30px;
+	display: block;
+	background-color: rgb(221, 14, 31);
+	color: #FFF;
+	text-decoration: none;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 5px;
+	float: left;
+}	
+.folderCreateCTA:hover{
+	color: #FFF;
+	text-decoration: none;
+	float: left;
+	background-color: rgba(221, 14, 31, .6);
+}
+
+
+
+/* --- post detail --- */
+
+
+.postHeader{
+	height: 50vh;
+	background-color: #AAA;
+	overflow: hidden;
+	margin-top: 50px;
+}
+.postHeader img{
+	width: 100%;
+	height: auto;
+	margin-top: -400px;
+}
+
+.headerInfo{
+	min-height: 50px;
+	box-sizing: border-box;
+	padding: 10px;
+	max-width: 600px;
+	margin: auto;
+
+}
+
+.addNext .icon{
+	float: right;
+}
+.addNext .labelIcon{
+	float: right;
+	height: 35px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #888;
+	margin-right: 10px;
+}
+
+.headerInfo h1{
+	font-size: 5em;
+	font-family: bigNoodle;
+	display: block;
+	width: 100%;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+}
+.postWriteDetail{
+	float: left;
+	width: 100%;
+	min-height: 20px;
+}
+.postWriteDetail .userSelect{
+	float: left !important;
+	display: inline-block;
+	width: 200px;
+	margin-top: 22px;
+	font-weight: bold;
+	color: rgb(221, 14, 31);
+}
+
+table, tr, td{
+	border: 0px solid #000;
+	margin: 0px;
+	padding: 0px;
+}
+
+#dateToAdd{
+	width: 100%;
+	margin: 0px;
+	float: left;
+	font-weight: bold;
+	color: #666;
+}
+.sepText{
+	color: #666;	
+	float: left;
+	display: inline-block;
+	font-weight: bolder;
+	margin: 0px 5px;
+}
+.userLink{
+	color: rgb(221, 14, 30);
+	font-weight: bolder;
+	float: left;
+	display: inline-block;
+	text-decoration: none;
+}
+.userLink:hover{
+	text-decoration: underline;
+	color: rgb(221, 14, 30);
+}
+.dateOfWriting{
+	margin-left: 20px;
+	color: #666;
+	font-weight: bold;
+	float: right;
+	display: block;
+}
+
+
+.postContent{
+	margin-top: 30px;
+	min-height: 50px;
+	box-sizing: border-box;
+	padding: 10px;
+	max-width: 600px;
+
+}
+.postContent p{
+	margin: 0px;
+
+}
+.postContent img{
+	width: 100%;
+	height: auto;
+}
+.contentWrite{
+
+	margin: auto;
+	margin-top: 30px;
+	min-height: 50px;
+	box-sizing: border-box;
+	padding: 10px;
+	max-width: 600px;
+	background-color: #FFF;
+	margin-bottom: 50px;
+}
+
+.postSaveCTA{
+	width: 100px;
+	height: 30px;
+	display: block;
+	background-color: rgb(221, 14, 31);
+	color: #FFF;
+	text-decoration: none;
+	margin: 10px;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 5px;
+}	
+.postSaveCTA:hover{
+	color: #FFF;
+	text-decoration: none;
+	background-color: rgba(221, 14, 31, .6);
+}
+
+.postWriteContent{
+	margin-top: 30px;
+	min-height: 50px;
+	box-sizing: border-box;
+	padding: 10px;
+	width: 100%;
+	background-color: #FFF;
+}
+.postWriteContent p{
+	margin: 0px;
+}
+.postWriteContent img{
+	width: 100%;
+	height: auto;
+}
+.editable{
+    box-sizing: border-box;
+    padding: 10px;
+	border-bottom: 2px solid #666;
+	line-height: 1.1em;
+	max-width: 600px;
+	margin: auto;
+
+}
+
+.editable:focus{
+
+
+	border-bottom: 2px solid rgb(221, 14, 31);
+	box-shadow: 0 0 0px rgba(81, 203, 238, 1);
+	outline: none;
+}
+
+.commentWrap{
+
+	margin-top: 30px;
+	min-height: 50px;
+	box-sizing: border-box;
+	padding: 10px;
+	max-width: 600px;
+}
+.commentWrap input[type="text"]{
+	width: calc(100% - 100px);
+	float: left;
+}
+.commentWrap input[type="submit"]{
+	width: 90px;
+	margin-left: 10px;
+	text-align: center;
+	font-family: sans-serif !important;
+	float: left;
+	border-radius: 5px;
+	background-color: rgb(221, 14, 30);
+}
+.commentHolder{
+	margin: auto;
+	
+	margin-top: 30px;
+	min-height: 50px;
+	box-sizing: border-box;
+	padding: 10px;
+	background-color: #FFF;
+	max-width: 600px;
+
+}
+.commentItem{
+	margin-top: 30px;
+}
+.commentHolder .userName{
+	float: left;
+	line-height: 40px;
+	min-height: 40px;
+	font-weight: bold;
+	width: calc(100% - 60px);
+}
+
+.commentContent p{
+	margin: 10px;
+	color: #666;
+}
+
+
+
+/* --- select user --- */
+
+.selectUserContainer{
+	position: absolute;
+	top: 200px;
+	min-height: 100px;
+	box-sizing: border-box;
+	width: 390px;
+	margin-left: -180px;
+	left: 50%;
+	text-align: center;
+	padding-bottom: 10px;
+	box-sizing: border-box;
+	padding: 10px;
+
+}
+.selectUserContainer h1{
+	width: 100%;
+	text-align: left;
+	font-size: 3em;
+	font-family: bigNoodle, sans-serif;
+}
+.selectUserContainer a{
+	width: 80px;
+	height: 100px;
+	border-radius: 10px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	color: #666;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: .8em;
+	text-align: center;
+}
+.userOption{
+	width: 80px;
+	height: 80px;
+	overflow: hidden;
+	border-radius: 10px;
+}
+.userOption img{
+	height: 80px;
+	float: left;
+}
+
+
+
+/* --- feed --- */
+
+.anchors{
+	float: left;
+}
+
+
+.filterHolder .icon{
+	margin: -7px 0px;
+}
+
+.monthHolder{
+	margin-bottom: 30px;
+	float: left;
+}
+.dayElement{
+	width: calc(14% - 10px);
+	margin: 5px;
+	height: 100px;
+	overflow: hidden;
+	float: left;
+}
+.dayElement img{
+	height: 150%;
+	width: auto;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	z-index: 2;
+}
+.dayNames{
+	width: 100%;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+.dayNames ul{
+	width: 100%;
+	margin: 0px;
+}
+.dayNames ul li{
+	display: inline-block;
+	width: calc(14%);
+	text-align: center;
+	font-weight: bold;
+	color: #AAA;
+}
+.dayNumber{
+	font-size: 3em;
+	display: block;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	height: 110px;
+	margin-top: -160px;
+	text-align: center;
+	line-height: 100px;
+	color: #FFF;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: relative;
+	z-index: 3;
+}
+.inactiveDay{
+	opacity: .3;
+}
+
+.monthName{
+	font-size: 1.5em;
+	font-weight: bold;
+	font-family: bigNoodle;
+	color: rgb(221, 14, 31);
+	width: 98%;
+	float: left;
+	padding: 10px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+}
+
+
+
+
+.yearHolder{
+	margin-bottom: 30px;
+	float: left;
+	width: 100%;
+}
+.monthElement{
+	width: calc(24.5% - 10px);
+	margin: 5px;
+	height: 150px;
+	overflow: hidden;
+	float: left;
+}
+.monthElement img{
+	height: 150%;
+	width: 100%;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	z-index: 2;
+}
+.monthNumber{
+	font-size: 2em;
+	display: block;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	height: 160px;
+	margin-top: -235px;
+	text-align: center;
+	line-height: 150px;
+	color: #FFF;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: relative;
+	z-index: 3;
+}
+.yearName{
+	font-size: 1.5em;
+	font-weight: bold;
+	font-family: bigNoodle;
+	color: rgb(221, 14, 31);
+	width: 98%;
+	float: left;
+	padding: 10px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+.dayWrap{
+	margin-bottom: 30px;
+}
+.col{
+	width: calc(50% - 10px);
+	margin: 0px;
+	float: left;
+}
+.imageHolder{
+	width: 100%;
+	height: 230px;
+	overflow: hidden;
+	float: left;
+}
+.textHolder{
+	width: 100%;
+	display: block;
+	height: 170px;
+	box-sizing: border-box;
+	float: left;
+	overflow: hidden;
+	padding: 15px 20px;
+	margin-bottom: 20px;
+}
+.creatorHolder{
+	width: 100%;
+	float: left;
+	height: 30px;
+	box-sizing: border-box;
+	padding-left: 17px;
+}
+.creatorHolder .user-image-small{
+	margin: 0px;
+}
+.creatorHolder .creatorName{
+	float: left;
+	display: block;
+	color: #999;
+	width: calc(100% - 40px);
+	line-height: 35px;
+	height: 40px;
+	overflow: hidden;
+	box-sizing: border-box;
+	padding-left: 10px;
+}
+.textHolder h1{
+	font-size: 1.1em;
+	font-family: opensans_bold;
+	float: left;
+	color: #000;
+	letter-spacing: .05em;
+	line-height: 1.3em;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	overflow: hidden;
+}
+.textHolder p{
+	float: left;
+	width: 100%;
+	margin: 0px;
+	margin-bottom: 9px;
+	overflow: hidden;
+	color: #999;
+	font-size: .9em;
+	line-height: 1.4em;
+	letter-spacing: .03em;
+	font-family: sourceSansPro;
+}
+.textHolder .postedOn{
+	font-size: .8em;
+	height: 30px;
+	width: 100%;
+	display: block;
+	font-family: sourceSansProLight;
+	color: #AAA;
+	text-decoration: underline;
+	line-height: 20px;
+	float: left;
+}
+
+.postCTA {
+	width: 100%;
+	display: block;
+	text-align: left;
+	height: 30px;
+	line-height: 20px;
+	font-family: sourceSansPro;
+	box-sizing: border-box;
+	padding-left: 20px;
+	margin-top: 0px;
+	float: left;
+	box-sizing: border-box;
+}
+.postCTA:hover{
+	color: rgb(221, 14, 31);
+}
+
+.postHolder .imageHolder{
+	height: 230px;
+}
+.postHolder .imageHolder img{
+	height: 100%;
+	width: auto;
+}
+.postHolder{
+	width: calc(50% - 10px);
+	padding: 5px;
+	box-sizing: border-box;
+	height: 500px;
+	background-color: #FFF;
+	margin: 5px 5px;
+	float: left;
+}
+
+.textHolder .cta-small{
+	display: block;
+	float: right;
+	margin: 0px;
+	padding: 5px 10px;
+	height: 40px;
+	box-sizing: border-box;
+	text-decoration: none;
+	line-height: 30px;
+	color: #666;
+}
+.cta-small:hover{
+	color: rgba(221, 14, 30, 1);
+	border-bottom: 2px solid rgba(221, 14, 30, 1);
+
+}
+
+
+
+
+.articleHolder{
+	width: calc(100% - 10px);
+	margin: 5px;
+	box-sizing: border-box;
+	border-left: 5px solid rgba(221, 14, 30, 1);
+	height: 250px;
+	background-color: #FFF;
+	float: left;
+}
+
+
+.articleHolder .imageHolder{
+	width: calc(50% - 10px);
+	height: 100%;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	float: left;
+  }
+
+.articleHolder .imageHolder img{
+	height: 100%;
+	width: auto;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	z-index: 9;
+}
+.articleInfo{
+	height: 50px;
+	font-family: sourceSansPro;
+	margin: 0px;
+	width: 100%;
+	color: #FFF;
+	position: relative;
+	left: 10px;
+	top: -60px;
+	z-index: 20;
+	float: left;
+}
+.articleInfo .day{
+	font-size: 1em;
+	width: 70px;
+	float: left;
+	line-height: 50px;
+	font-size: 4em;
+	padding: 0px;
+	font-family: sourceSansProLight;
+}
+.articleInfo .infoCell{
+	float: left;
+}
+.articleInfo .infoCell .month{
+	height: 25px;
+	padding: 0px;
+	margin-bottom: -5px;
+	margin-top: 5px;
+	font-size: 1.2em;
+	line-height: 30px;
+	font-family: sourceSansProLight;
+	display: block;
+}
+.articleInfo .infoCell .temperature{
+	height: 25px;
+	line-height: 25px;
+	padding: 0px;
+	font-size: 1.2em;
+	display: block;
+	font-family: sourceSansProBold;
+
+}
+
+.articleTextWrap{
+	width: calc(50% - 0px);
+	height: 250px;
+	float: left;
+	display: block;
+	margin-top: 0px;
+}
+.articleTextWrap .articleElement{
+	float: left;
+	height: 220px;
+	overflow: hidden;
+	box-sizing: border-box;
+	padding: 20px;
+}
+.articleElement h1{
+	font-family: Alegreya;
+	font-size: 1.3em;
+	line-height: 1.3em;
+	margin-top: 0px;
+	display: block;
+	margin-bottom: 0px;
+	max-height: 100px;
+	float: left;
+	letter-spacing: .08em;
+}
+.articleElement p{
+	font-family: sourceSansPro;
+	display: block;
+	float:left;
+
+}
+
+
+
+.articleCTA{
+	width: 100%;
+	display: block;
+	text-align: left;
+	height: 30px;
+	line-height: 20px;
+	padding-left: 20px;
+	font-family: sourceSansPro;
+	margin-top: 0px;
+	box-sizing: border-box;
+}
+.articleCTA:hover{
+	color: rgb(221, 14, 31);
+}
+
+
+
+
+
+
+
+.createCTA{
+	position: fixed;
+	top: 70px;
+	left: 20px;
+	width: 100px;
+	display: block;
+	height: 30px;
+	text-align: center;
+	background-color: rgba(221, 14, 31, 1);
+	color: #FFF;
+	text-decoration: none;
+	line-height: 30px;
+	border-radius: 5px;
+	z-index: 25;
+}
+.createCTA:hover{
+	color: #FFF;
+	background-color: rgba(221, 14, 31, .8);
+}
+/* --- menu --- */
+
+
+.menuWrap{
+	background-color: #FFF;
+	float: left;
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 24;
+	box-sizing: border-box;
+	padding-top: 5px;
+
+}
+.menuFill{
+	margin-top: 3px;
+}
+.menuFill .icon{
+	float: left;
+}
+.logo{
+	float: left;
+	margin-right: 10px;
+	margin-top: 4px;
+}
+.logo img{
+	height: 31px;
+}
+.fLeft{
+	width: 40px;
+	float: left;
+}
+ .fRight{
+	text-align: right;
+	float: right;
+	width: 180px;
+	margin-top: -2px;
+}
+.fRight .icon{
+	margin-top: 5px;
+	margin-right: 5px;
+}
+.fCenter{
+	margin-left: calc(5vw + 10px);
+}
+.fCenter .tellAbout{
+	font-size: 2.3em;
+	font-weight: bold;
+	line-height: 40px;
+	color: #666;
+	float: left;
+	font-weight: lighter;
+	font-family: bigNoodle;
+
+}
+.fCenter .tellAboutName{
+	font-size: 2.3em;
+	font-weight: bold;
+	line-height: 40px;
+	text-transform: capitalize !important;
+	font-weight: lighter;
+	float: left;
+	color: rgba(221, 14, 30, 1);
+	font-family: bigNoodle;
+}
+.fCenter .HI_CTA{
+	display: block;
+	position: fixed;
+	left: calc(50% - 50px);
+	width: 100px;
+	height: 30px;
+	margin: 5px;
+	top: 5px;
+	float: left;
+	z-index: 20;
+}
+
+
+.CTAHI{
+	width: 30px;
+	height: 30px;
+	display: block;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+	color: rgba(221, 14, 30, 1);
+	cursor: pointer;
+	background: url("../img/icons/hidden_interest.png");
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	margin: auto;
+}
+.CTAHI img{
+	height: 30px;
+}
+.CTAHI:hover{
+	background: url("../img/icons/hidden_interest_wide.png");
+	width: 90px; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+}
+
+.CTA{
+	width: 100%;
+	height: 100%;
+	display: block;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+	color: rgba(221, 14, 30, 1);
+	cursor: pointer;
+}
+.CTA img{
+	height: 30px;
+}
+.CTA:hover{
+	color: #FFF;
+}
+.user-image-small{
+	width: 27px;
+	height: 27px;
+	float: left;
+	overflow: hidden;
+	border-radius: 50%;
+	margin: 5px;
+	background-color: #EEE;
+	border: 3px solid #FFF;
+}
+.user-image-small img{
+	height: 100%;
+}
+.mainAdmin{
+	border: 3px solid rgb(221, 14, 31);
+}
+
+.sidebarHolder{
+	width: 250px;
+	height: 100%;
+	position: fixed;
+	left: -250px;
+	background-color: #FFF;
+	top: 0px;
+	z-index: 18;
+	box-sizing: border-box;
+	padding-top: 60px;
+}
+.userList{
+	margin: 10px 0px;
+	width: 100%;
+	float: left;
+}
+.userList ul li{
+	display: block;
+	list-style-type: none;
+	float: left;
+	min-height: 40px;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding-left: 10px;
+}
+.userList .userName{
+	float: left;
+	line-height: 40px;
+	min-height: 40px;
+	font-weight: bold;
+	width: calc(100% - 60px);
+}
+.userList ul li:hover{
+	background-color: #EEE;
+	cursor: pointer;
+}
+.documentHolder{
+	width: 100%;
+	margin-top: 30px;
+	float: left;
+	box-sizing: border-box;
+	padding: 20px;
+}
+.documentHolder .CTA{
+	text-decoration: none;
+	width: 100%;
+	display: block;
+}
+.documentHolder .CTA:hover{
+	color: rgba(221, 14, 30, 1);
+	float: left;
+	border-bottom: 2px solid rgba(221, 14, 30, 1);
+
+}
+
+/* --- user --- */
+
+.userHeader{
+	height: 350px;
+	display: block;
+	width: 100%;
+	min-height: 50px;
+	overflow: hidden;
+}
+.userHeader img{
+	width: 100%;
+	margin-top: calc(-100vw / 5.18);
+	background-color: #AAA;
+}
+.userInfo{
+	margin-bottom: 50px;
+	margin-top: 10px;
+	color: #AAA;
+}
+.infoBlock{
+	float: left;
+	padding: 3px;
+	padding-right: 20px;
+}
+.userLinks{
+	float: right;
+}
+.userInfo .icon{
+	float: left;
+	margin-right: 0px;
+	margin-top: -2px;
+}
+.infoEl{
+	float: left;
+	line-height: 35px;
+	margin-left: 0px;
+}
+
+.adminHolder .user-image-small{
+	float: left;
+}
+.adminHolder{
+	box-sizing: border-box;
+	padding-right: 17px;
+}
+
+@media (max-width: 600px){
+	.tellAbout{
+		display: none;
+
+	}
+	.tellAboutName{
+		display: none;
+	}
+}
+@media (min-width: 400px) {
+	.col{
+		width: calc(100% - 10px);
+	}
+
+}
+
+@media (min-width: 600px) {
+	.col{
+		width: calc(50% - 10px);
+	}
+}
+
+@media (min-width: 1024px) {
+	.col{
+		width: calc(50% - 10px);
+	}
+}
+
+@font-face{
+	font-family: Alegreya;
+	src: url("fonts/Alegreya-Bold.ttf");
+}
+@font-face{
+	font-family: opensans_bold;
+	src: url("fonts/OpenSans-Bold.ttf");
+}
+@font-face{
+	font-family: opensans;
+	src: url("fonts/OpenSans-Regular.ttf");
+}
+@font-face{
+	font-family: sourceSansPro;
+	src: url("fonts/SourceSansPro-Regular.ttf");
+}
+@font-face{
+	font-family: sourceSansProBold;
+	src: url("fonts/SourceSansPro-Bold.ttf");
+}
+@font-face{
+	font-family: sourceSansProLight;
+	src: url("fonts/SourceSansPro-Light.ttf");
+}
+@font-face{
+	font-family: bigNoodle;
+	font-weight: lighter;
+	src: url("fonts/big_noodle_titling.ttf");
+}

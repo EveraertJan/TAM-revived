@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  api:
+    build:
+      context: ./api/
+    container_name: tam_api
+    depends_on:
+      - store
+    volumes:
+      - ./api/src:/tam/src
+      - ./_volumes:/tam/uploads
+    environment:
+      APP_VERSION_NUMBER:
+      APP_VERSION_LABEL:
+      PG_CONNECTION_STRING: postgres://admin:admin@store:5432/tellaboutme
+      DOMAIN:
+
+  front:
+    build:
+      context: ./front/
+    container_name: tam_front
+    depends_on:
+      - api
+    environment:
+      REACT_APP_VERSION_NUMBER: ${APP_VERSION_NUMBER}
+      REACT_APP_VERSION_LABEL: ${APP_VERSION_LABEL}
+      REACT_APP_API_URL: ${REACT_APP_API_URL}
+    volumes:
+      - ./front/public:/tam/public
+      - ./front/src:/tam/src
+      - ./_volumes:/tam/uploads
+
+  store:
+    image: postgres
+    build:
+      context: ./store
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DATABASE: tellaboutme

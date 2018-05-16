@@ -1,0 +1,3 @@
+CREATE USER admin;
+CREATE DATABASE tellaboutme;
+GRANT ALL PRIVILEGES ON DATABASE tellaboutme TO admin;
