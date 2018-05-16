@@ -1,0 +1,5 @@
+package-lock.json
+api/package-lock.json
+front/package-lock.json
+api/src/config.js
+front/src/js/config.js
