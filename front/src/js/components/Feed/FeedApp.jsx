@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { css } from 'glamor'
 import { connect } from 'react-redux';
 
-import { userPersistLogin, userLogOutAction } from './../../actions/UserActions'
+import MenuApp from './../Menu/MenuApp'
+
+import { userPersistLogin } from './../../actions/UserActions'
 
 const loginContainer = css({
   width: '300px',
@@ -12,14 +14,6 @@ const loginContainer = css({
   left: 'calc(60% - 150px)',
   padding: '20px',
   boxSizing: 'border-box'
-})
-const imageContainer = css({
-  width: '40%',
-  height: '100%',
-  overflow: 'hidden',
-  backgroundColor: '#eee',
-  position: 'fixed',
-  left: '0px',
 })
 
 class FeedApp extends Component {
@@ -35,12 +29,10 @@ class FeedApp extends Component {
   render() {
     return (
       <span>
-        <div {...imageContainer}>
-
-        </div>
         <div {...loginContainer}>
-        Welcome <a onClick={this.props.logout}>Log out</a>
+        Welcome
         </div>
+        <MenuApp />
       </span>
     )
   }
@@ -53,7 +45,6 @@ export default connect(state => {
   }
 }, dispatch => {
  return {
-  persistLogin: () => dispatch(userPersistLogin()),
-  logout: () => dispatch(userLogOutAction())
+  persistLogin: () => dispatch(userPersistLogin())
  }
 })(FeedApp);

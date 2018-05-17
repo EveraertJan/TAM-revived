@@ -20,7 +20,7 @@ const PORT = 3000;
 const retryKnex = require('./Utils/RetryKnex.js');
 
 const Users = require('./Fields/User')
-
+const Posts = require('./Fields/Posts')
 
 const secret = 'XXX'
 
@@ -106,6 +106,7 @@ class App {
 
 
     new Users().assignFields(app, this.pg, passport);
+    new Posts().assignFields(app, this.pg, passport);
 
 
     server.listen(3000, () => {
@@ -144,6 +145,23 @@ class App {
             table.string('last_name');
             table.string('date_of_birth');
             table.boolean('has_read_terms');
+            table.timestamps(true, true);
+          })
+          .then(function() {
+            console.log('created table Users');
+          });
+    });
+
+    await pg.schema.hasTable('posts').then(async (exists) => {
+      if (!exists)
+        await pg.schema
+          .createTable('posts', function(table) {
+            table.increments();
+            table.uuid('uuid');
+            table.uuid('creator');
+            table.uuid('subject');
+            table.string('title');
+            table.uuid('media');
             table.timestamps(true, true);
           })
           .then(function() {

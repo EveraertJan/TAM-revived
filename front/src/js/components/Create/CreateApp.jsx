@@ -1,7 +1,11 @@
 
 import React, { Component } from 'react';
 import { css } from 'glamor'
-import LoginForm from './LoginForm'
+import { connect } from 'react-redux';
+
+import MenuApp from './../Menu/MenuApp'
+
+import { userPersistLogin } from './../../actions/UserActions'
 
 const loginContainer = css({
   width: '300px',
@@ -11,6 +15,7 @@ const loginContainer = css({
   padding: '20px',
   boxSizing: 'border-box'
 })
+
 const imageContainer = css({
   width: '40%',
   height: '100%',
@@ -20,33 +25,16 @@ const imageContainer = css({
   left: '0px',
 })
 
-const cta = css({
-  float: 'right',
-  textDecoration: 'none',
-  padding: '0px 10px',
-  margin: '10px',
-  marginRight: '0px',
-  height: '40px',
-  lineHeight: '40px',
-  '.primary': {
-    backgroundColor: '#000',
-    color: '#fff',
-    ':hover': {
-      backgroundColor: '#333',
-      color: '#fff'
+class CreateApp extends Component {
+  componentDidMount() {
+    if(!this.props.user.info.id) {
+      //request user info
+      this.props.persistLogin()
+    } 
+    else {
+      console.log(this.props)
     }
-  },
-  '.secundary': {
-    backgroundColor: '#FFFFFF',
-    color: '#333333',
-    ':hover': {
-      backgroundColor: '#eeeeee',
-      color: '#333333'
-    }
-
   }
-})
-export default class LoginApp extends Component {
   render() {
     return (
       <span>
@@ -54,9 +42,21 @@ export default class LoginApp extends Component {
 
         </div>
         <div {...loginContainer}>
-          <LoginForm />
+        Create
         </div>
+        <MenuApp />
       </span>
     )
   }
 }
+
+
+export default connect(state => {
+  return {
+    user: state.user
+  }
+}, dispatch => {
+ return {
+  persistLogin: () => dispatch(userPersistLogin())
+ }
+})(CreateApp);
