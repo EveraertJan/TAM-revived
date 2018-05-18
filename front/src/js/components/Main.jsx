@@ -9,6 +9,7 @@ import LoginApp from './Login/LoginApp'
 import RegisterApp from './Register/RegisterApp'
 import FeedApp from './Feed/FeedApp'
 import CreateApp from './Create/CreateApp'
+import DetailApp from './Detail/DetailApp'
 
 import ModalsApp from './Modals/ModalsApp'
 
@@ -19,6 +20,7 @@ class Main extends Component {
         <Switch>
           <Route exact path='/register' component={RegisterApp} />
           <Route exact path='/create' component={CreateApp} />
+          <Route exact path='/post/:uuid' component={DetailApp} />
           <Route exact path='/' component={ Auth.isUserAuthenticated() ? FeedApp :  LoginApp} />
         </Switch>
         <ModalsApp />

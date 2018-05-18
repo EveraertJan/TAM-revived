@@ -4,15 +4,16 @@ import { css } from 'glamor'
 import { connect } from 'react-redux';
 
 import MenuApp from './../Menu/MenuApp'
-
+import PostList from './PostList'
 import { userPersistLogin } from './../../actions/UserActions'
 
-const loginContainer = css({
-  width: '300px',
+const postContainer = css({
+  width: '600px',
   position: 'absolute',
-  top: 'calc(50% - 200px)',
-  left: 'calc(60% - 150px)',
+  top: 'calc(200px)',
+  left: 'calc(50% - 150px)',
   padding: '20px',
+  paddingBottom: '200px',
   boxSizing: 'border-box'
 })
 
@@ -29,8 +30,8 @@ class FeedApp extends Component {
   render() {
     return (
       <span>
-        <div {...loginContainer}>
-        Welcome
+        <div {...postContainer}>
+          { this.props.user.info.id ? <PostList /> : null  } 
         </div>
         <MenuApp />
       </span>

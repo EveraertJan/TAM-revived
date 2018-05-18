@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 import { userReducer } from './UserReducer';
-import { postReducer } from './PostReducer';
+import { postsReducer } from './PostsReducer';
 import { utilsReducer } from './UtilsReducer'
 
 import { routerReducer } from 'react-router-redux'
@@ -9,7 +9,7 @@ import { routerReducer } from 'react-router-redux'
 const tellAboutMe = combineReducers({
   form: formReducer,
   user: userReducer,
-  post: postReducer,
+  posts: postsReducer,
   utils: utilsReducer,
   routing: routerReducer
 })
