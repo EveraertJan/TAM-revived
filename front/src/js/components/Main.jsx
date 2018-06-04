@@ -8,8 +8,9 @@ import Auth from './../Modules/Auth'
 import LoginApp from './Login/LoginApp'
 import RegisterApp from './Register/RegisterApp'
 import FeedApp from './Feed/FeedApp'
-import CreateApp from './Create/CreateApp'
+import CreateChildApp from './CreateChild/CreateChildApp.jsx'
 import DetailApp from './Detail/DetailApp'
+import SettingsApp from './Settings/SettingsApp'
 
 import ModalsApp from './Modals/ModalsApp'
 
@@ -19,8 +20,10 @@ class Main extends Component {
       <span>
         <Switch>
           <Route exact path='/register' component={RegisterApp} />
-          <Route exact path='/create' component={CreateApp} />
-          <Route exact path='/post/:uuid' component={DetailApp} />
+          <Route exact path='/createChild' component={ Auth.isUserAuthenticated() ? CreateChildApp :  LoginApp} />
+          <Route exact path='/post/:uuid' component={ Auth.isUserAuthenticated() ? DetailApp :  LoginApp} />
+          <Route exact path='/user/settings/:uuid' component={ Auth.isUserAuthenticated() ? SettingsApp :  LoginApp} />
+          <Route exact path='/user/:uuid' component={ Auth.isUserAuthenticated() ? FeedApp  :  LoginApp} />
           <Route exact path='/' component={ Auth.isUserAuthenticated() ? FeedApp :  LoginApp} />
         </Switch>
         <ModalsApp />

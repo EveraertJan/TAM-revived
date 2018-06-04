@@ -69,7 +69,7 @@ class PostCreateModal extends Component {
     const data = {
       ...this.props.fieldValues,
       creator: this.props.user.info.id,
-      subject: this.props.user.info.id,
+      subject: this.props.user.detail.uuid,
       media: null
     }
     this.props.createItem(data)

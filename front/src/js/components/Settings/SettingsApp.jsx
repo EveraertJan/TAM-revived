@@ -4,10 +4,11 @@ import { css } from 'glamor'
 import { connect } from 'react-redux';
 
 import MenuApp from './../Menu/MenuApp'
-import PostList from './PostList'
 import { userPersistLogin, userGetInfo } from './../../actions/UserActions'
 
-const postContainer = css({
+import WritersApp from './Writers/WritersApp'
+
+const settingsContainer = css({
   width: '600px',
   position: 'absolute',
   top: 'calc(200px)',
@@ -17,7 +18,7 @@ const postContainer = css({
   boxSizing: 'border-box'
 })
 
-class FeedApp extends Component {
+class SettingsApp extends Component {
   componentDidMount() {
     if(!this.props.user.info.id) {
       //request user info
@@ -35,8 +36,10 @@ class FeedApp extends Component {
   render() {
     return (
       <span>
-        <div {...postContainer}>
-          <PostList /> 
+        <div {...settingsContainer}>
+          settings
+          {this.props.user.detail.uuid ? 
+            <WritersApp /> : null }
         </div>
         { this.props.user.info.id ? 
           <MenuApp />
@@ -56,4 +59,4 @@ export default connect(state => {
   persistLogin: () => dispatch(userPersistLogin()),
   getInfo: (data) => dispatch(userGetInfo(data))
  }
-})(FeedApp);
+})(SettingsApp);

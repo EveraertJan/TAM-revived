@@ -4,8 +4,10 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { css } from 'glamor';
 import { Provider } from 'react-redux';
-import createHistory from 'history/createBrowserHistory'
-import { Router, Route } from 'react-router';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import history from './js/history'
+
+import { Router, Route, IndexRoute } from 'react-router'
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import Logger from 'redux-logger';
@@ -17,7 +19,6 @@ import sagas from './js/Sagas/';
 import MenuApp from "./js/components/Menu/MenuApp";
 import Main from './js/components/Main';
 
-const history = createHistory();
 
 const container = css({
   minHeight: '100vh',
@@ -25,6 +26,7 @@ const container = css({
   display: 'block',
   backgroundColor: '#FFFFFF'
 })
+
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -34,13 +36,14 @@ sagaMiddleware.run(sagas)
 
 ReactDOM.render(
   <Provider store={store}>
-    { /* ConnectedRouter will use the store from Provider automatically */ }
-    <Router history={history}>
-      <div {...container}>
-        <MenuApp />
-        <Route path='/' component={Main} />
-      </div>
-    </Router>
+    <div>
+      { /* ConnectedRouter will use the store from Provider automatically */ }
+      <Router history={history}>
+        <div {...container}>
+          <Route path='/' component={Main} />
+        </div>
+      </Router>
+    </div>
   </Provider>,
   document.getElementById('root')
 )

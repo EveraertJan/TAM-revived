@@ -2,6 +2,9 @@ import {
   USER_LOG_IN,
   USER_LOG_IN_SUCCESS,
   USER_LOG_IN_FAILED,
+  USER_GET_INFO,
+  USER_GET_INFO_SUCCESS,
+  USER_GET_INFO_FAILED,
   USER_LOG_OUT,
   USER_LOG_OUT_SUCCESS,
   USER_LOG_OUT_FAILED,
@@ -23,7 +26,8 @@ const initialState = {
     loading: false,
     failed: false
   },
-  info: {}
+  info: {},
+  detail: {}
 };
 
 export function userReducer(state = initialState, action) {
@@ -33,6 +37,12 @@ export function userReducer(state = initialState, action) {
       return {
         ...state,
         info: action.data
+      }
+    case USER_GET_INFO_SUCCESS: 
+      console.log(action)
+      return {
+        ...state,
+        detail: action.data
       }
     case USER_REGISTER:
       return {

@@ -6,24 +6,30 @@ import { connect } from 'react-redux';
 import MenuApp from './../Menu/MenuApp'
 import UserBadge from './../Common/UserBadge'
 
+import AddPart from './AddPart'
+import PostPart from './PostPart'
 import { postFetchDetail } from './../../actions/PostActions'
 
 const detailContainer = css({
-  width: '300px',
+  width: 'calc(65% - 100px)',
   position: 'absolute',
   top: 'calc( 100px)',
-  left: 'calc(60% - 150px)',
+  left: 'calc(35% + 50px)',
   padding: '20px',
-  boxSizing: 'border-box'
+  boxSizing: 'border-box',
+  paddingBottom: '100px'
 })
 
 const imageContainer = css({
-  width: '40%',
-  height: '100%',
+  width: '100%',
   overflow: 'hidden',
-  backgroundColor: '#eee',
-  position: 'fixed',
-  left: '0px',
+  minHeight: '200px',
+  marginBottom: '50px',
+    padding: '0px',
+  '> img': {
+    width: '100%',
+    margin: '0px'
+  }
 })
 
 class DetailApp extends Component {
@@ -31,16 +37,21 @@ class DetailApp extends Component {
     this.props.fetchDetail(this.props.match.params.uuid)
   }
   render() {
-    const { title, uuid, last_name, first_name, creator } = this.props.posts.detail.data
-
+    const { title, uuid, last_name, first_name, creator, parts } = this.props.posts.detail.data
     return (
       <span>
-        <div {...imageContainer}>
-          <img />
-        </div>
         <div {...detailContainer}>
+          <div {...imageContainer}>
+            <img src="https://picsum.photos/600/400" />
+          </div>
+
           <h1>{title}</h1>
           <UserBadge data={{...this.props.posts.detail.data, userID: creator}} />
+          { parts ? parts.map((index, key) => {
+            return <PostPart data={index} key={key} />
+          }) : null}
+
+          <AddPart />
         </div>
         <MenuApp />
       </span>

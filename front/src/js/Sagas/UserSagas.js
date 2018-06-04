@@ -1,5 +1,5 @@
-import { all, put, takeEvery } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
+import { all, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import history from './../history'
 
 import Auth from './../Modules/Auth'
 
@@ -15,6 +15,12 @@ import {
   USER_REGISTER,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAILED,
+  USER_CREATE_CHILD,
+  USER_CREATE_CHILD_SUCCESS,
+  USER_CREATE_CHILD_FAILED,
+  USER_GET_INFO,
+  USER_GET_INFO_SUCCESS,
+  USER_GET_INFO_FAILED,
   USER_PERSIST_LOGIN,
   USER_PERSIST_LOGIN_SUCCESS,
   USER_PERSIST_LOGIN_FAILED
@@ -36,6 +42,36 @@ function* userRegister(action) {
   }
 }
 
+function* userCreateChild(action) {
+  try {
+    
+    const result = yield axios({
+      method: 'post',
+      data: action.data,
+      url: `${process.env.REACT_APP_API_URL}/user/createChild`,
+      headers: { Authorization: `Bearer ${Auth.getToken()}` },
+    });
+    yield put({ type: USER_CREATE_CHILD_SUCCESS, data: result.data });
+  } catch (e) {
+    yield put({ type: USER_CREATE_CHILD_FAILED, message: e.message });
+  }
+}
+
+function* userGetInfo(action) {
+  try {
+    
+    const result = yield axios({
+      method: 'get',
+      data: action.data,
+      url: `${process.env.REACT_APP_API_URL}/user/info/${action.data}`,
+      headers: { Authorization: `Bearer ${Auth.getToken()}` },
+    });
+    yield put({ type: USER_GET_INFO_SUCCESS, data: result.data });
+  } catch (e) {
+    yield put({ type: USER_GET_INFO_FAILED, message: e.message });
+  }
+}
+
 function* userPersistLogin(action) {
   try {
 
@@ -46,7 +82,6 @@ function* userPersistLogin(action) {
     });
 
     yield put({ type: USER_LOG_IN_SUCCESS, data: result.data });
-    yield put(push(`/${result.data.uuid}`))
 
   } catch (e) {
     yield put({ type: USER_LOG_IN_FAILED, message: e.message });
@@ -64,8 +99,6 @@ function* userLogin(action) {
     Auth.authenticateUser(result.data)
 
     yield put({ type: USER_LOG_IN_SUCCESS, data: result.data });
-    yield put(push(`/${result.data.uuid}`))
-
   } catch (e) {
     yield put({ type: USER_LOG_IN_FAILED, message: e.message });
   }
@@ -77,6 +110,7 @@ function* userLogout(action) {
       method: 'post',
       url: `${process.env.REACT_APP_API_URL}/user/logout`
     });
+    history.push('/')
     Auth.deauthenticateUser()
 
     yield put({ type: USER_LOG_OUT_SUCCESS, data: result.data });
@@ -91,7 +125,10 @@ function* usersSagas() {
     takeEvery(USER_REGISTER, userRegister),
     takeEvery(USER_LOG_IN, userLogin),
     takeEvery(USER_LOG_OUT, userLogout),
-    takeEvery(USER_PERSIST_LOGIN, userPersistLogin)
+    takeEvery(USER_PERSIST_LOGIN, userPersistLogin),
+    takeEvery(USER_CREATE_CHILD, userCreateChild),
+    takeEvery(USER_CREATE_CHILD_SUCCESS, userPersistLogin),
+    takeLatest(USER_GET_INFO, userGetInfo)
   ])
 }
 

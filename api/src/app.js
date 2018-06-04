@@ -21,6 +21,7 @@ const retryKnex = require('./Utils/RetryKnex.js');
 
 const Users = require('./Fields/User')
 const Posts = require('./Fields/Posts')
+const Settings = require('./Fields/Settings')
 
 const secret = 'XXX'
 
@@ -67,11 +68,14 @@ class App {
 
 
     passport.use(new LocalStrategy((email, password, cb) => {
-      this.pg.select(['email', 'password', 'uuid', 'first_name', 'last_name']).table('users').where({email: email }).then((result) => {
+      this.pg.select(['users.email', 'users.password', 'users.uuid', 'users.first_name', 'users.last_name', 'relations.childID']).table('users').where('users.email', email).leftJoin('relations', 'users.uuid', 'relations.parentID').then(async (result) => {
+        console.log(result)
         if(result.length > 0) {
           if(result[0].password === md5(password)){
             const first = result[0];
-            cb(null, jwt.encode({ id: first.uuid, email: first.email, first_name: first.first_name, last_name: first.last_name }, secret))
+            await this.pg.select(['users.first_name', 'users.last_name', 'users.uuid']).table('relations').where('relations.parentID', first.uuid).leftJoin('users', 'relations.childID', 'users.uuid').then((data) => {
+              cb(null, jwt.encode({ id: first.uuid, email: first.email, first_name: first.first_name, last_name: first.last_name, relations: data }, secret))
+            })
           } else {
             console.log('no match')
             cb(null, false);
@@ -86,7 +90,6 @@ class App {
       })
     }))
     passport.serializeUser((user, done) => {
-      console.log(user.id)
       const sessionUser = jwt.encode({ id: user.id, email: user.email }, secret);
       done(null, sessionUser)
     })
@@ -107,6 +110,7 @@ class App {
 
     new Users().assignFields(app, this.pg, passport);
     new Posts().assignFields(app, this.pg, passport);
+    new Settings().assignFields(app, this.pg, passport);
 
 
     server.listen(3000, () => {
@@ -152,6 +156,23 @@ class App {
           });
     });
 
+
+    await pg.schema.hasTable('relations').then(async (exists) => {
+      if (!exists)
+        await pg.schema
+          .createTable('relations', function(table) {
+            table.increments();
+            table.uuid('uuid');
+            table.uuid('parentID');
+            table.uuid('childID');
+            table.string('role');
+            table.timestamps(true, true);
+          })
+          .then(function() {
+            console.log('created table relations');
+          });
+    });
+
     await pg.schema.hasTable('posts').then(async (exists) => {
       if (!exists)
         await pg.schema
@@ -165,9 +186,27 @@ class App {
             table.timestamps(true, true);
           })
           .then(function() {
-            console.log('created table Users');
+            console.log('created table posts');
           });
     });
+
+
+    await pg.schema.hasTable('postParts').then(async (exists) => {
+      if (!exists)
+        await pg.schema
+          .createTable('postParts', function(table) {
+            table.increments();
+            table.uuid('uuid');
+            table.uuid('postID');
+            table.uuid('creator');
+            table.text('content', 'longtext');
+            table.timestamps(true, true);
+          })
+          .then(function() {
+            console.log('created table postParts');
+          });
+    });
+
     this.hasSetup = true;
   }
 }

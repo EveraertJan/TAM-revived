@@ -7,6 +7,10 @@ import {
   POST_CREATE_ITEM_SUCCESS,
   POST_CREATE_ITEM_FAILED,
 
+  POST_CREATE_PART,
+  POST_CREATE_PART_SUCCESS,
+  POST_CREATE_PART_FAILED,
+
   POST_CREATE_INFO,
   POST_CREATE_INFO_SUCCESS,
   POST_CREATE_INFO_FAILED,
@@ -32,6 +36,11 @@ const initialState = {
     failed: false,
     data: {}
   },
+  part: {
+    loading: false,
+    failed: false,
+    data: {}
+  },
   create: {
     loading: false,
     failed: false,
@@ -51,6 +60,17 @@ export function postsReducer(state = initialState, action) {
         ...state,
         create: {
           ...state.create,
+          loading: true,
+          failed: false,
+          data: {}
+        }
+      }
+
+    case POST_CREATE_PART: 
+      return {
+        ...state,
+        part: {
+          ...state.part,
           loading: true,
           failed: false,
           data: {}

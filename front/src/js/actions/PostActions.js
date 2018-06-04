@@ -10,6 +10,10 @@ export const POST_CREATE_ITEM = 'tellaboutme/POST_CREATE_ITEM';
 export const POST_CREATE_ITEM_SUCCESS = 'tellaboutme/POST_CREATE_ITEM_SUCCESS';
 export const POST_CREATE_ITEM_FAILED = 'tellaboutme/POST_CREATE_ITEM_FAILED';
 
+export const POST_CREATE_PART = 'tellaboutme/POST_CREATE_PART';
+export const POST_CREATE_PART_SUCCESS = 'tellaboutme/POST_CREATE_PART_SUCCESS';
+export const POST_CREATE_PART_FAILED = 'tellaboutme/POST_CREATE_PART_FAILED';
+
 export const POST_DELETE_ITEM = 'tellaboutme/POST_DELETE_ITEM';
 export const POST_DELETE_ITEM_SUCCESS = 'tellaboutme/POST_DELETE_ITEM_SUCCESS';
 export const POST_DELETE_ITEM_FAILED = 'tellaboutme/POST_DELETE_ITEM_FAILED';
@@ -36,6 +40,12 @@ export function postFetchDetail(data) {
 export function postCreateItem(data) {
   return {
     type: POST_CREATE_ITEM,
+    data
+  };
+}
+export function postCreatePart(data) {
+  return {
+    type: POST_CREATE_PART,
     data
   };
 }

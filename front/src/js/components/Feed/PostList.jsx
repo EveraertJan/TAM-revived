@@ -8,16 +8,10 @@ import PostItem from './PostItem'
 import { postFetchList } from './../../actions/PostActions'
 
 class PostList extends Component {
-  componentDidMount() {
-    this.props.fetchList({
-      subject: this.props.user.info.id
-    })
-  }
   render() {
     return (
       <span>
         {this.props.posts.list.data.map((index, key) => {
-          console.log(index)
           return <PostItem key={key} data={index} />
         })}
       </span>
@@ -33,6 +27,5 @@ export default connect(state => {
   }
 }, dispatch => {
  return {
-  fetchList: (data) => dispatch(postFetchList(data))
  }
 })(PostList);

@@ -5,46 +5,85 @@ import { css } from 'glamor'
 
 import { Link } from 'react-router-dom'
 
-import { userLogOutAction } from './../../actions/UserActions'
+import ChildItem from './ChildItem'
+
+import { userLogOutAction, userPersistLogin } from './../../actions/UserActions'
 import { modalShowPostCreateItem } from './../../actions/UtilsActions'
 
 const menuContainer = css({
-  width: '500px',
-  height: '50px',
+  width: '300px',
+  height: '100vh',
   lineHeight: '30px',
   position: 'fixed',
-  top: 'calc(100% - 90px)',
-  left: 'calc(50% - 250px)',
+  left: '0px',
+  top: '0px',
   backgroundColor: '#fff',
   padding: '10px',
   boxSizing: 'border-box',
-  boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.1)'
 })
 
 const cta = css({
   display: 'block',
   float: 'left',
   height: '30px',
-  padding: '0px 10px',
-  marginLeft: '20px'
+  boxSizing: 'border-box',
+  width: '100px',
+  textAlign: 'center'
 })
 
 const header = css({
   display: 'block',
   height: '30px',
   padding: '0px 10px',
+  fontSize: '2em',
+  fontWeight: 'bold',
   float: 'left',
-  marginLeft: '20px'
+  width: '500px',
+  position: 'fixed',
+  left: '0px',
+  top: 'calc(50% - 200px)',
+  transform: 'rotate(270deg)'
+})
+
+const children = css({
+  width: '180px',
+  display: 'block',
+  position: 'fixed',
+  left: '50px',
+  height: '300px',
+  top: '50px'
+})
+
+const userActions = css({
+  position: 'fixed',
+  top: 'calc(100% - 40px)',
+  width: '100%'
 })
 
 
 class MenuApp extends Component {
+  componentDidMount() {
+    if(!this.props.user.info.id) {
+      //request user info
+      this.props.persistLogin()
+    }
+  }
   render() {
     return (
       <div {...menuContainer}>
         <span {...header}>Tell about me </span>
-        <a onClick={this.props.showCreateModal}>+ Tell a story</a>
-        <a onClick={this.props.logout} {...cta}>Log out</a>
+        <span {...children}>
+        { this.props.user.info.relations ? this.props.user.info.relations.map((index, key) => {
+          return <ChildItem key={key} data={index} />
+        })
+        : null }
+        <Link {...cta} to={'/createChild'}>Create child</Link>
+        </span>
+        <a {...cta} onClick={this.props.showCreateModal}>+ Tell a story</a>
+        <div {...userActions}>
+          <Link to={`/user/${this.props.user.info.id}`} {...cta}>Me</Link>
+          <a {...cta} onClick={this.props.logout}>log out</a>
+        </div>
       </div>
     )
   }
@@ -58,6 +97,7 @@ export default connect(state => {
 }, dispatch => {
  return {
   logout: () => dispatch(userLogOutAction()),
+  persistLogin: () => dispatch(userPersistLogin()),
   showCreateModal: () => dispatch(modalShowPostCreateItem())
  }
 })(MenuApp);

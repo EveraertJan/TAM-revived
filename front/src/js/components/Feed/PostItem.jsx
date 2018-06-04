@@ -22,7 +22,6 @@ const postInfo = css({
 
 class PostItem extends Component {
   render() {
-    console.log(this.props)
     const { title, uuid, last_name, first_name, creator } = this.props.data
     return (
       <div {...itemContainer}>
