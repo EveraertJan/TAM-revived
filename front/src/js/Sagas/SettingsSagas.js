@@ -1,10 +1,7 @@
 import { all, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import history from './../history'
-
 import Auth from './../Modules/Auth'
 
 import axios from 'axios';
-import md5 from 'md5'
 import {
   SETTINGS_GET_WRITERS,
   SETTINGS_GET_WRITERS_SUCCESS,

@@ -37,7 +37,7 @@ class DetailApp extends Component {
     this.props.fetchDetail(this.props.match.params.uuid)
   }
   render() {
-    const { title, uuid, last_name, first_name, creator, parts } = this.props.posts.detail.data
+    const { parts, creator, title } = this.props.posts.detail.data
     return (
       <span>
         <div {...detailContainer}>

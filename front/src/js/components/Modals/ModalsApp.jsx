@@ -13,9 +13,6 @@ const overlay = css({
   top: '0px',
   zIndex: '1000'
 })
-const popup = css({
-
-})
 
 class ModalsApp extends Component {
   render() {

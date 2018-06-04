@@ -1,7 +1,5 @@
 import {
-  SETTINGS_GET_WRITERS,
-  SETTINGS_GET_WRITERS_SUCCESS,
-  SETTINGS_GET_WRITERS_FAILED
+  SETTINGS_GET_WRITERS_SUCCESS
 } from './../actions/SettingsActions';
 
 const initialState = {

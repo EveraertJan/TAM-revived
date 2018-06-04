@@ -20,32 +20,6 @@ const imageContainer = css({
   left: '0px',
 })
 
-const cta = css({
-  float: 'right',
-  textDecoration: 'none',
-  padding: '0px 10px',
-  margin: '10px',
-  marginRight: '0px',
-  height: '40px',
-  lineHeight: '40px',
-  '.primary': {
-    backgroundColor: '#000',
-    color: '#fff',
-    ':hover': {
-      backgroundColor: '#333',
-      color: '#fff'
-    }
-  },
-  '.secundary': {
-    backgroundColor: '#FFFFFF',
-    color: '#333333',
-    ':hover': {
-      backgroundColor: '#eeeeee',
-      color: '#333333'
-    }
-
-  }
-})
 export default class LoginApp extends Component {
   render() {
     return (

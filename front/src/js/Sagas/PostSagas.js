@@ -1,6 +1,4 @@
 import { all, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import connect from 'react-redux'
-import { push } from 'react-router-redux';
 import history from './../history'
 import Auth from './../Modules/Auth'
 

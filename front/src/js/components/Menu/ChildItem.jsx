@@ -35,7 +35,7 @@ export default class ChildItem extends Component {
   render() {
     return (
       <div {...child}>
-        <img src="#" />
+        <img src="#" alt="userprofile image" />
         <Link to={`/user/${this.props.data.uuid}`}>
           {this.props.data.first_name} {this.props.data.last_name}
         </Link>
