@@ -7,8 +7,9 @@ import MenuApp from './../Menu/MenuApp'
 import UserBadge from './../Common/UserBadge'
 
 import AddPart from './AddPart'
+import AddImage from './AddImage'
 import PostPart from './PostPart'
-import { postFetchDetail } from './../../actions/PostActions'
+import { postFetchDetail, postUpdateHeader } from './../../actions/PostActions'
 
 const detailContainer = css({
   width: 'calc(65% - 100px)',
@@ -32,18 +33,66 @@ const imageContainer = css({
   }
 })
 
+const cta = css({
+  float: 'right',
+  textDecoration: 'none',
+  padding: '0px 10px',
+  margin: '10px',
+  marginRight: '0px',
+  height: '40px',
+  lineHeight: '40px',
+  '.primary': {
+    backgroundColor: '#000',
+    color: '#fff',
+    ':hover': {
+      backgroundColor: '#333',
+      color: '#fff'
+    }
+  },
+  '.secundary': {
+    backgroundColor: '#FFFFFF',
+    color: '#333333',
+    ':hover': {
+      backgroundColor: '#eeeeee',
+      color: '#333333'
+    }
+
+  }
+})
+
+const img = css({
+  width:  '100%',
+  float: 'left'
+})
 class DetailApp extends Component {
+  constructor() {
+    super();
+    this.saveHeaderFile = this.saveHeaderFile.bind(this)
+  }
   componentDidMount() {
     this.props.fetchDetail(this.props.match.params.uuid)
   }
+  saveHeaderFile() {
+    this.props.updatePostHeader(this.props.file.image.data.uuid, this.props.posts.detail.data.uuid)
+  }
   render() {
-    const { parts, creator, title } = this.props.posts.detail.data
+    const { parts, creator, title, url } = this.props.posts.detail.data
+    console.log(url)
     return (
       <span>
         <div {...detailContainer}>
           <div {...imageContainer}>
-            <img src="https://picsum.photos/600/400" />
+            { 
+              url === null ?
+                <span>
+                  <AddImage />
+                { this.props.file.image.data.uuid ? <a {...cta} className="primary" onClick={this.saveHeaderFile}>Save Image</a> : null }
+                </span>
+              :
+                <img src={`${process.env.REACT_APP_API_URL}${url}`} {...imageContainer} />
+            }
           </div>
+          
 
           <h1>{title}</h1>
           <UserBadge data={{...this.props.posts.detail.data, userID: creator}} />
@@ -52,6 +101,7 @@ class DetailApp extends Component {
           }) : null}
 
           <AddPart />
+
         </div>
         <MenuApp />
       </span>
@@ -63,10 +113,12 @@ class DetailApp extends Component {
 export default connect(state => {
   return {
     user: state.user,
-    posts: state.posts
+    posts: state.posts,
+    file: state.file
   }
 }, dispatch => {
  return {
-  fetchDetail: (id) => dispatch(postFetchDetail(id))
+  fetchDetail: (id) => dispatch(postFetchDetail(id)),
+  updatePostHeader: (imageUuid, postUuid) => dispatch(postUpdateHeader(imageUuid, postUuid))
  }
 })(DetailApp);

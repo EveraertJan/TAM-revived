@@ -26,8 +26,7 @@ class FeedApp extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props.user.detail.uuid, this.props.match.params.uuid)
-    if(this.props.user.detail === {} || this.props.user.detail.uuid !== this.props.match.params.uuid) {
+    if(this.props.user.detail === {} || this.props.user.detail.uuid !== this.props.match.params.uuid && !this.props.user.loading) {
       this.props.getInfo(this.props.match.params.uuid ? this.props.match.params.uuid : this.props.user.detail.uuid )
     }
   }

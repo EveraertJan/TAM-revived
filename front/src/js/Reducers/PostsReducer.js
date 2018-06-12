@@ -1,19 +1,9 @@
 import {
-  POST_DELETE_ITEM,
-  POST_DELETE_ITEM_SUCCESS,
-  POST_DELETE_ITEM_FAILED,
 
   POST_CREATE_ITEM,
-  POST_CREATE_ITEM_SUCCESS,
-  POST_CREATE_ITEM_FAILED,
 
   POST_CREATE_PART,
   POST_CREATE_PART_SUCCESS,
-  POST_CREATE_PART_FAILED,
-
-  POST_CREATE_INFO,
-  POST_CREATE_INFO_SUCCESS,
-  POST_CREATE_INFO_FAILED,
 
   POST_FETCH_LIST,
   POST_FETCH_LIST_SUCCESS,
@@ -74,6 +64,17 @@ export function postsReducer(state = initialState, action) {
           loading: true,
           failed: false,
           data: {}
+        }
+      }
+
+    case POST_CREATE_PART_SUCCESS: 
+      return {
+        ...state,
+        part: {
+          ...state.part,
+          loading: false,
+          failed: false,
+          data: action.data
         }
       }
 

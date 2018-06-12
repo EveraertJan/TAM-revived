@@ -22,6 +22,7 @@ const retryKnex = require('./Utils/RetryKnex.js');
 const Users = require('./Fields/User')
 const Posts = require('./Fields/Posts')
 const Settings = require('./Fields/Settings')
+const File = require('./Fields/File');
 
 const secret = 'XXX'
 
@@ -52,7 +53,7 @@ class App {
     const _this = this;
 
     app.use(cors({credentials: false, origin: '*'}))
-
+    app.use(fileUpload());
     app.use(cookieParser('keyboard cat'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
@@ -64,7 +65,8 @@ class App {
     }));
     app.use(passport.initialize());
     app.use(passport.session());
-
+    
+    app.use('/uploads', express.static('/tam/uploads'))
 
 
     passport.use(new LocalStrategy((email, password, cb) => {
@@ -105,12 +107,12 @@ class App {
 
 
 
-    app.use('/uploads', express.static('/tam/uploads'))
 
 
     new Users().assignFields(app, this.pg, passport);
     new Posts().assignFields(app, this.pg, passport);
     new Settings().assignFields(app, this.pg, passport);
+    new File().assignFields(app, this.pg, passport);
 
 
     server.listen(3000, () => {
@@ -200,12 +202,30 @@ class App {
             table.uuid('postID');
             table.uuid('creator');
             table.text('content', 'longtext');
+            table.text('type');
             table.timestamps(true, true);
           })
           .then(function() {
             console.log('created table postParts');
           });
     });
+
+
+    await pg.schema.hasTable('media').then(async (exists) => {
+      if (!exists)
+        await pg.schema
+          .createTable('media', function(table) {
+            table.increments();
+            table.uuid("uuid");
+            table.string('url').notNullable();
+            table.string('type').notNullable();
+            table.timestamps(true, true);
+          })
+          .then(function() {
+            console.log('created table postParts');
+          });
+    });
+
 
     this.hasSetup = true;
   }

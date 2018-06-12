@@ -22,6 +22,10 @@ export const POST_CREATE_INFO = 'tellaboutme/POST_CREATE_INFO';
 export const POST_CREATE_INFO_SUCCESS = 'tellaboutme/POST_CREATE_INFO_SUCCESS';
 export const POST_CREATE_INFO_FAILED = 'tellaboutme/POST_CREATE_INFO_FAILED';
 
+export const POST_UPDATE_HEADER = 'tellaboutme/POST_UPDATE_HEADER';
+export const POST_UPDATE_HEADER_SUCCESS = 'tellaboutme/POST_UPDATE_HEADER_SUCCESS';
+export const POST_UPDATE_HEADER_FAILED = 'tellaboutme/POST_UPDATE_HEADER_FAILED';
+
 
 export function postFetchList(data) {
   return {
@@ -35,6 +39,14 @@ export function postFetchDetail(data) {
     type: POST_FETCH_DETAIL,
     data
   };
+}
+
+export function postUpdateHeader(imageUuid, postUuid) {
+  return {
+    type: POST_UPDATE_HEADER,
+    imageUuid,
+    postUuid
+  }
 }
 
 export function postCreateItem(data) {

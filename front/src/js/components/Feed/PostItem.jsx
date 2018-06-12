@@ -22,10 +22,10 @@ const postInfo = css({
 
 class PostItem extends Component {
   render() {
-    const { title, uuid, last_name, first_name, creator } = this.props.data
+    const { title, uuid, last_name, first_name, creator, url } = this.props.data
     return (
       <div {...itemContainer}>
-        <img src="#" />
+        <img src={`${process.env.REACT_APP_API_URL}${url}`} />
         <div {...postInfo}>
           <h2>{title}</h2>
           <Link to={`/post/${uuid}`}>read more</Link>

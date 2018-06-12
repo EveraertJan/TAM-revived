@@ -7,6 +7,7 @@ module.exports = {
     if(req.headers.authorization) {
       const token = jwt.decode(req.headers.authorization.split(' ')[1], secret);
       // console.log(token)
+      token['uuid'] = token.id
       req.user = token
       if (token) return next()
     }

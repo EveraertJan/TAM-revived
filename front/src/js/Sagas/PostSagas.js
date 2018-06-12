@@ -16,11 +16,15 @@ import {
   POST_FETCH_LIST_FAILED,
   POST_FETCH_DETAIL,
   POST_FETCH_DETAIL_SUCCESS,
-  POST_FETCH_DETAIL_FAILED
+  POST_FETCH_DETAIL_FAILED,
+  POST_UPDATE_HEADER,
+  POST_UPDATE_HEADER_SUCCESS,
+  POST_UPDATE_HEADER_FAILED
 } from './../actions/PostActions';
 
 import { 
-  USER_GET_INFO_SUCCESS
+  USER_GET_INFO_SUCCESS,
+  USER_LOG_IN_SUCCESS
 } from './../actions/UserActions'
 
 import {
@@ -54,6 +58,25 @@ function* postFetchDetail(action) {
 
   } catch (e) {
     yield put({ type: POST_FETCH_DETAIL_FAILED, message: e.message });
+  }
+}
+
+
+function* postUpdateHeader(action) {
+  try {
+    const result = yield axios({
+      method: 'post',
+      data: {
+        imageUuid: action.imageUuid,
+        postUuid: action.postUuid
+      },
+      url: `${process.env.REACT_APP_API_URL}/post/update/header`,
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    });
+    yield put({ type: POST_UPDATE_HEADER_SUCCESS, data: result.data });
+
+  } catch (e) {
+    yield put({ type: POST_UPDATE_HEADER_FAILED, message: e.message });
   }
 }
 
@@ -95,8 +118,10 @@ function* postSagas() {
     takeEvery(POST_CREATE_ITEM, postCreateItem),
     takeEvery(POST_CREATE_PART, postCreatePart),
     takeEvery(POST_FETCH_LIST, postFetchList),
+    takeEvery(POST_UPDATE_HEADER, postUpdateHeader),
     takeEvery(POST_FETCH_DETAIL, postFetchDetail),
-    takeLatest(USER_GET_INFO_SUCCESS, postFetchList)
+    takeLatest(USER_GET_INFO_SUCCESS, postFetchList),
+    takeLatest(USER_LOG_IN_SUCCESS, postFetchList)
   ])
 }
 

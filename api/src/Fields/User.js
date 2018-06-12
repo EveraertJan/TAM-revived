@@ -1,5 +1,6 @@
 const uuidV1 = require('uuid/v1');
 const { requiresLogin } = require('./../Utils/Auth')
+const fs = require("fs");
 
 class Users {
   constructor(app) {
@@ -34,6 +35,7 @@ class Users {
           parentID: req.user.id,
           uuid: newUUID
         }
+        fs.mkdir('/tam/uploads/' + newUUID);
         await pg.insert(rel).table('relations').then((data) => {
           res.status(200).send(data)
         }).catch((error) => {
@@ -46,7 +48,7 @@ class Users {
 
     app.get('/user/info', requiresLogin, async(req, res) => {
 
-      res.send(200, req.user)
+      res.status(200).send(req.user)
     })
     app.get('/user/info/:userID', requiresLogin, async(req, res) => {
       await pg.select(['first_name', 'last_name', 'uuid', 'date_of_birth']).table('users').where({uuid: req.params.userID}).then((data) => {

@@ -12,6 +12,11 @@ const postPart = css({
   width: '100%'
 })
 
+const img = css({
+  width:  '100%',
+  float: 'left'
+})
+
 const p = css({
   float: 'left',
   width: 'calc(100% - 50px)',
@@ -21,12 +26,17 @@ const p = css({
 })
 export default class PostPart extends Component {
   render() {
+    console.log( this.props.data.type)
     return (
       <div {...postPart}>
         <UserBadgeSmall data={{...this.props.data, userID: this.props.data.uuid}} />
-        <p {...p}>
-          {this.props.data.content}
-        </p>
+         { this.props.data.type === 'TEXT' ? 
+          <p {...p}>
+            {this.props.data.content}
+          </p>
+          : 
+          <img src={`${process.env.REACT_APP_API_URL}${this.props.data.content}`} {...img} />
+        }
       </div>
     )
   }
