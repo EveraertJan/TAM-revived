@@ -1,11 +1,7 @@
 
 import React, { Component } from 'react';
-import { css } from 'glamor'
 import { connect } from 'react-redux';
-
-import MenuApp from './../Menu/MenuApp'
 import PostItem from './PostItem'
-import { postFetchList } from './../../actions/PostActions'
 
 class PostList extends Component {
   render() {

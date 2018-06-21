@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { css } from 'glamor'
 import { connect } from 'react-redux';
-
+import AddImage from './../Common/AddImage'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 
 import { postCreateItem } from './../../actions/PostActions'
@@ -70,7 +70,7 @@ class PostCreateModal extends Component {
       ...this.props.fieldValues,
       creator: this.props.user.info.id,
       subject: this.props.user.detail.uuid,
-      media: null
+      media: this.props.file.image.data.uuid
     }
     this.props.createItem(data)
   }
@@ -83,9 +83,10 @@ class PostCreateModal extends Component {
             <label htmlFor="title">Title</label>
             <Field component={renderField} type="text" name="title" placeholder="title of the post" />
           </div>
+          <AddImage />
           <a type="submit" {...cta} className="primary" onClick={this.handleSubmit}>Create post</a>
         </form>
-
+             
       </div>
     )
   }
@@ -104,7 +105,8 @@ export default connect(
     return {
       fieldValues: selector(state, 'title', 'about'),
       utils: state.utils,
-      user: state.user
+      user: state.user,
+      file: state.file
     };
   },
   (dispatch) => { 

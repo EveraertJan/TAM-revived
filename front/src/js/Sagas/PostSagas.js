@@ -34,14 +34,16 @@ import {
 
 function* postFetchList(action) {
   try {
-    console.log(action)
-    const result = yield axios({
-      method: 'get',
-      url: `${process.env.REACT_APP_API_URL}/posts/user/${action.data.uuid}`,
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
-    });
-    yield put({ type: POST_FETCH_LIST_SUCCESS, data: result.data });
 
+    console.log(action)
+    if(action.data.uuid) {
+      const result = yield axios({
+        method: 'get',
+        url: `${process.env.REACT_APP_API_URL}/posts/user/${action.data.uuid}`,
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      });
+      yield put({ type: POST_FETCH_LIST_SUCCESS, data: result.data });
+    }
   } catch (e) {
     yield put({ type: POST_FETCH_LIST_FAILED, message: e.message });
   }
@@ -70,7 +72,7 @@ function* postUpdateHeader(action) {
         imageUuid: action.imageUuid,
         postUuid: action.postUuid
       },
-      url: `${process.env.REACT_APP_API_URL}/post/update/header`,
+      url: `${process.env.REACT_APP_API_URL}/posts/update/header`,
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     });
     yield put({ type: POST_UPDATE_HEADER_SUCCESS, data: result.data });
@@ -85,10 +87,10 @@ function* postCreateItem(action) {
     const result = yield axios({
       method: 'post',
       data: action.data,
-      url: `${process.env.REACT_APP_API_URL}/post/create`,
+      url: `${process.env.REACT_APP_API_URL}/posts/create`,
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     });
-    history.push(`/post/${result.data[0]}`);
+    history.push(`${action.data.creator}/post/${result.data[0]}`);
     yield put({ type: POST_CREATE_ITEM_SUCCESS, data: result.data });
     yield put({ type: UTILS_HIDE_MODAL_POST_CREATE });
   } catch (e) {
@@ -102,7 +104,7 @@ function* postCreatePart(action) {
     const result = yield axios({
       method: 'post',
       data: action.data,
-      url: `${process.env.REACT_APP_API_URL}/post/add/${action.data.postID}`,
+      url: `${process.env.REACT_APP_API_URL}/posts/add/${action.data.postID}`,
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     });
     yield put({ type: POST_FETCH_DETAIL, data: action.data.postID });

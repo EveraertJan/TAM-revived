@@ -7,15 +7,13 @@ import MenuApp from './../Menu/MenuApp'
 import UserBadge from './../Common/UserBadge'
 
 import AddPart from './AddPart'
-import AddImage from './AddImage'
 import PostPart from './PostPart'
-import { postFetchDetail, postUpdateHeader } from './../../actions/PostActions'
+import { postFetchDetail } from './../../actions/PostActions'
 
 const detailContainer = css({
-  width: 'calc(65% - 100px)',
-  position: 'absolute',
-  top: 'calc( 100px)',
-  left: 'calc(35% + 50px)',
+  width: '900px',
+  marginLeft: 'calc((100vw - 900px) / 2)',
+  marginTop: '100px',
   padding: '20px',
   boxSizing: 'border-box',
   paddingBottom: '100px'
@@ -26,7 +24,7 @@ const imageContainer = css({
   overflow: 'hidden',
   minHeight: '200px',
   marginBottom: '50px',
-    padding: '0px',
+  padding: '0px',
   '> img': {
     width: '100%',
     margin: '0px'
@@ -67,13 +65,9 @@ const img = css({
 class DetailApp extends Component {
   constructor() {
     super();
-    this.saveHeaderFile = this.saveHeaderFile.bind(this)
   }
   componentDidMount() {
     this.props.fetchDetail(this.props.match.params.uuid)
-  }
-  saveHeaderFile() {
-    this.props.updatePostHeader(this.props.file.image.data.uuid, this.props.posts.detail.data.uuid)
   }
   render() {
     const { parts, creator, title, url } = this.props.posts.detail.data
@@ -82,15 +76,7 @@ class DetailApp extends Component {
       <span>
         <div {...detailContainer}>
           <div {...imageContainer}>
-            { 
-              url === null ?
-                <span>
-                  <AddImage />
-                { this.props.file.image.data.uuid ? <a {...cta} className="primary" onClick={this.saveHeaderFile}>Save Image</a> : null }
-                </span>
-              :
-                <img src={`${process.env.REACT_APP_API_URL}${url}`} {...imageContainer} />
-            }
+            <img src={`${process.env.REACT_APP_API_URL}${url}`} {...imageContainer} />
           </div>
           
 
@@ -118,7 +104,6 @@ export default connect(state => {
   }
 }, dispatch => {
  return {
-  fetchDetail: (id) => dispatch(postFetchDetail(id)),
-  updatePostHeader: (imageUuid, postUuid) => dispatch(postUpdateHeader(imageUuid, postUuid))
+  fetchDetail: (id) => dispatch(postFetchDetail(id))
  }
 })(DetailApp);

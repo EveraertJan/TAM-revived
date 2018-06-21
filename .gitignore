@@ -4,3 +4,4 @@ front/package-lock.json
 api/src/config.js
 front/src/js/config.js
 node_modules/
+/_volumes/

@@ -4,6 +4,7 @@ import {
   FILE_UPLOAD_IMAGE_FAILED,
 
 } from './../actions/FileActions'
+import { POST_CREATE_ITEM_SUCCESS } from '../actions/PostActions';
 
 
 const initialState = {
@@ -35,6 +36,16 @@ export function fileReducer(state = initialState, action) {
         }
       }
     case FILE_UPLOAD_IMAGE_FAILED: 
+      return {
+        ...state,
+        image: {
+          ...initialState.image,
+          loading: false,
+          success: false
+        }
+      }
+    
+    case POST_CREATE_ITEM_SUCCESS: 
       return {
         ...state,
         image: {

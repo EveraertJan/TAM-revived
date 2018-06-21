@@ -31,7 +31,7 @@ export default class UserBadge extends Component {
   render() {
     return (
       <div {...userBadgeContainer}>
-        <Link to={`/user/${this.props.data.userID}`}>
+        <Link to={`/${this.props.data.userID}`}>
           <div {...userImg}>
             <img src={'#'} />
           </div>

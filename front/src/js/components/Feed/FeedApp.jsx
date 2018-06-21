@@ -2,44 +2,39 @@
 import React, { Component } from 'react';
 import { css } from 'glamor'
 import { connect } from 'react-redux';
+import history from './../../history'
+import { userGetInfo } from './../../actions/UserActions'
+import { postFetchList } from './../../actions/PostActions'
+
 
 import MenuApp from './../Menu/MenuApp'
 import PostList from './PostList'
-import { userPersistLogin, userGetInfo } from './../../actions/UserActions'
 
 const postContainer = css({
-  width: '600px',
-  position: 'absolute',
-  top: 'calc(200px)',
-  left: 'calc(50% - 150px)',
+  width: '900px',
+  marginLeft: 'calc((100vw - 900px) / 2)',
+  marginTop: '100px',
   padding: '20px',
   paddingBottom: '200px',
   boxSizing: 'border-box'
 })
 
 class FeedApp extends Component {
+  
   componentDidMount() {
-    if(!this.props.user.info.id) {
-      //request user info
-      this.props.persistLogin()
-    }
-  }
-
-  componentDidUpdate() {
-    if(this.props.user.detail === {} || this.props.user.detail.uuid !== this.props.match.params.uuid && !this.props.user.loading) {
-      this.props.getInfo(this.props.match.params.uuid ? this.props.match.params.uuid : this.props.user.detail.uuid )
-    }
+    this.props.getInfo(this.props.match.params.userID);
+    this.props.getList(this.props.match.params.userID)
   }
 
   render() {
+    console.log(this.props.user.detail.uuid )
     return (
       <span>
         <div {...postContainer}>
-          <PostList /> 
+        { typeof this.props.user.detail.uuid !== undefined ? 
+            <PostList /> : null } 
         </div>
-        { this.props.user.info.id ? 
-          <MenuApp />
-           : null }
+        <MenuApp />
       </span>
     )
   }
@@ -52,7 +47,7 @@ export default connect(state => {
   }
 }, dispatch => {
  return {
-  persistLogin: () => dispatch(userPersistLogin()),
+  getList: (user) => dispatch(postFetchList(user)),
   getInfo: (data) => dispatch(userGetInfo(data))
  }
 })(FeedApp);

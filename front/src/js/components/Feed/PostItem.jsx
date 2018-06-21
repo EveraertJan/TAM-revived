@@ -5,15 +5,20 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const itemContainer = css({
-  height: '300px',
+  height: '280px',
   float: 'left',
   width: '200px',
-  margin: '10px',
+  margin: '5px',
+  overflow: 'hidden'
+})
+const imageContainer = css({
+  width: '100%',
+  height: '100px',
+  overflow: 'hidden',
   '>img': {
-    width: '100%',
-    height: '100px',
-    backgroundColor: '#eee'
+    width: '100%'
   }
+
 })
 const postInfo = css({
 
@@ -25,10 +30,12 @@ class PostItem extends Component {
     const { title, uuid, last_name, first_name, creator, url } = this.props.data
     return (
       <div {...itemContainer}>
-        <img src={`${process.env.REACT_APP_API_URL}${url}`} />
+        <div {...imageContainer}>
+          <img src={`${process.env.REACT_APP_API_URL}${url}`} />
+        </div>
         <div {...postInfo}>
           <h2>{title}</h2>
-          <Link to={`/post/${uuid}`}>read more</Link>
+          <Link to={`${this.props.user.detail.uuid}/post/${uuid}`}>read more</Link>
         </div>
       </div>
     )
@@ -37,7 +44,9 @@ class PostItem extends Component {
 
 
 export default connect(state => {
-  return {}
+  return {
+    user: state.user
+  }
 }, dispatch => {
  return {
  }

@@ -10,23 +10,50 @@ import FeedApp from './Feed/FeedApp'
 import CreateChildApp from './CreateChild/CreateChildApp.jsx'
 import DetailApp from './Detail/DetailApp'
 import SettingsApp from './Settings/SettingsApp'
+import ChildSelectApp from './ChildSelect/SelectChildApp'
 
 import ModalsApp from './Modals/ModalsApp'
 
+import { userPersistLogin, userGetInfo } from './../actions/UserActions'
+
+
 class Main extends Component {
+  
+  componentDidMount() {
+    if(!this.props.user.info.id) {
+      //request user info
+      this.props.persistLogin()
+    }
+  }
+
   render() {
     return (
       <span>
-        <Switch>
-          <Route exact path='/register' component={RegisterApp} />
-          <Route exact path='/createChild' component={ Auth.isUserAuthenticated() ? CreateChildApp :  LoginApp} />
-          <Route exact path='/post/:uuid' component={ Auth.isUserAuthenticated() ? DetailApp :  LoginApp} />
-          <Route exact path='/user/settings/:uuid' component={ Auth.isUserAuthenticated() ? SettingsApp :  LoginApp} />
-          <Route exact path='/user/:uuid' component={ Auth.isUserAuthenticated() ? FeedApp  :  LoginApp} />
-          <Route exact path='/' component={ Auth.isUserAuthenticated() ? FeedApp :  LoginApp} />
-        </Switch>
-        <ModalsApp />
+      {
+        Auth.isUserAuthenticated() ?
+        <span> 
+          <Switch>
+            <Route exact path='/register' component={RegisterApp} />
+            <Route exact path='/login' component={LoginApp} />
+            <Route exact path='/createChild' component={ CreateChildApp } />
+            <Route exact path='/:userID' component={ FeedApp } />
+            <Route exact path='/:userID/post/:uuid' component={ DetailApp } />
+            <Route exact path='/:userID/settings/:uuid' component={ SettingsApp } />
+            <Route exact path='/' component={ ChildSelectApp } />
+          </Switch>
+          <ModalsApp />
+        </span>
+        :
+        <span> 
+          <Switch>
+            <Route exact path='/register' component={RegisterApp} />
+            <Route exact path='/login' component={LoginApp} />
+            <Route exact path='/' component={ LoginApp } />
+          </Switch>
+        </span>
+      }
       </span>
+      
     )
   }
 }
@@ -41,6 +68,7 @@ export default connect(
   },
   (dispatch) => {
     return {
+      persistLogin: () => dispatch(userPersistLogin()),
     };
   }
 )(Main);

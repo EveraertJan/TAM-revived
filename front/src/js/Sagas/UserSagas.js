@@ -46,7 +46,7 @@ function* userCreateChild(action) {
     const result = yield axios({
       method: 'post',
       data: action.data,
-      url: `${process.env.REACT_APP_API_URL}/user/createChild`,
+      url: `${process.env.REACT_APP_API_URL}/createChild`,
       headers: { Authorization: `Bearer ${Auth.getToken()}` },
     });
     yield put({ type: USER_CREATE_CHILD_SUCCESS, data: result.data });
@@ -95,6 +95,7 @@ function* userLogin(action) {
     });
 
     Auth.authenticateUser(result.data)
+    history.push('/')
 
     yield put({ type: USER_LOG_IN_SUCCESS, data: result.data });
   } catch (e) {
@@ -104,12 +105,12 @@ function* userLogin(action) {
 
 function* userLogout(action) {
   try {
+    Auth.deauthenticateUser()
     const result = yield axios({
       method: 'post',
       url: `${process.env.REACT_APP_API_URL}/user/logout`
     });
-    history.push('/')
-    Auth.deauthenticateUser()
+    history.push('/login')
 
     yield put({ type: USER_LOG_OUT_SUCCESS, data: result.data });
   } catch (e) {
