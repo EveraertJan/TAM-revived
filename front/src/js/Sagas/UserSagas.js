@@ -52,10 +52,28 @@ function* userCreateChild(action) {
       headers: { Authorization: `Bearer ${Auth.getToken()}` },
     });
     yield put({ type: USER_CREATE_CHILD_SUCCESS, data: result.data });
+    // history.push('/');
   } catch (e) {
     yield put({ type: USER_CREATE_CHILD_FAILED, message: e.message });
   }
 }
+
+
+function* userRenewInfo(action) {
+  try {
+    const result = yield axios({
+      method: 'get',
+      url: `${process.env.REACT_APP_API_URL}/user/renewinfo`,
+      headers: { Authorization: `Bearer ${Auth.getToken()}` },
+    });
+    console.log('totla', result)
+    yield put({ type: USER_PERSIST_LOGIN_SUCCESS, data: result.data.user });
+    history.push('/');
+  } catch (e) {
+    yield put({ type: USER_PERSIST_LOGIN_FAILED, message: e.message });
+  }
+}
+
 
 function* userGetInfo(action) {
   try {
@@ -129,7 +147,7 @@ function* usersSagas() {
     takeEvery(USER_LOG_OUT, userLogout),
     takeEvery(USER_PERSIST_LOGIN, userPersistLogin),
     takeEvery(USER_CREATE_CHILD, userCreateChild),
-    takeEvery(USER_CREATE_CHILD_SUCCESS, userPersistLogin),
+    takeEvery(USER_CREATE_CHILD_SUCCESS, userRenewInfo),
     takeLatest(USER_GET_INFO, userGetInfo)
   ])
 }

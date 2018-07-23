@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { css } from 'glamor'
 import { connect } from 'react-redux';
 
+import { modalHidePostCreateItem } from './../../actions/UtilsActions'
+
 import PostCreateModal from './PostCreateModal'
 
 const overlay = css({
@@ -15,11 +17,19 @@ const overlay = css({
 })
 
 class ModalsApp extends Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    console.log("hiding")
+    this.props.hideModal();
+  }
   render() {
     return (
       <span>
         { this.props.utils.displayPostCreateItem ? 
-          <div {...overlay}>
+          <div {...overlay} onClick={this.handleClick}>
             <PostCreateModal /> 
           </div>
         : null }
@@ -38,6 +48,7 @@ export default connect(
   },
   (dispatch) => {
     return {
+      hideModal: () => dispatch( modalHidePostCreateItem() )
     };
   }
 )(ModalsApp);
