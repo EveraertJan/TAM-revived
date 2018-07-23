@@ -21,7 +21,9 @@ import {
   USER_GET_INFO,
   USER_GET_INFO_SUCCESS,
   USER_GET_INFO_FAILED,
-  USER_PERSIST_LOGIN
+  USER_PERSIST_LOGIN,
+  USER_PERSIST_LOGIN_SUCCESS,
+  USER_PERSIST_LOGIN_FAILED
 } from './../actions/UserActions';
 
 
@@ -46,7 +48,7 @@ function* userCreateChild(action) {
     const result = yield axios({
       method: 'post',
       data: action.data,
-      url: `${process.env.REACT_APP_API_URL}/createChild`,
+      url: `${process.env.REACT_APP_API_URL}/user/createChild`,
       headers: { Authorization: `Bearer ${Auth.getToken()}` },
     });
     yield put({ type: USER_CREATE_CHILD_SUCCESS, data: result.data });
@@ -79,10 +81,10 @@ function* userPersistLogin(action) {
       url: `${process.env.REACT_APP_API_URL}/user/info`
     });
 
-    yield put({ type: USER_LOG_IN_SUCCESS, data: result.data });
+    yield put({ type: USER_PERSIST_LOGIN_SUCCESS, data: result.data });
 
   } catch (e) {
-    yield put({ type: USER_LOG_IN_FAILED, message: e.message });
+    yield put({ type: USER_PERSIST_LOGIN_FAILED, message: e.message });
   }
 }
 
@@ -123,6 +125,7 @@ function* usersSagas() {
   yield all([
     takeEvery(USER_REGISTER, userRegister),
     takeEvery(USER_LOG_IN, userLogin),
+    takeEvery(USER_LOG_IN_SUCCESS, userPersistLogin),
     takeEvery(USER_LOG_OUT, userLogout),
     takeEvery(USER_PERSIST_LOGIN, userPersistLogin),
     takeEvery(USER_CREATE_CHILD, userCreateChild),

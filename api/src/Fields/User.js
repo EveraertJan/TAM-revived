@@ -47,7 +47,7 @@ class Users {
     })
 
     app.get('/user/info', requiresLogin, async(req, res) => {
-
+      console.log(req.user)
       res.status(200).send(req.user)
     })
     app.get('/user/info/:userID', requiresLogin, async(req, res) => {

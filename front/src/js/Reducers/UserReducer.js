@@ -8,7 +8,8 @@ import {
   USER_LOG_OUT_SUCCESS,
   USER_LOG_OUT_FAILED,
   USER_REGISTER,
-  USER_REGISTER_FAILED
+  USER_REGISTER_FAILED,
+  USER_PERSIST_LOGIN_SUCCESS
 } from './../actions/UserActions';
 
 const initialState = {
@@ -32,6 +33,12 @@ const initialState = {
 export function userReducer(state = initialState, action) {
   switch (action.type) {
     case USER_LOG_IN_SUCCESS: 
+      console.log(action)
+      return {
+        ...state,
+        info: action.data
+      }
+    case USER_PERSIST_LOGIN_SUCCESS: 
       console.log(action)
       return {
         ...state,
